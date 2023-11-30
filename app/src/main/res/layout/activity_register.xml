@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <!-- toolbar -->
+    <RelativeLayout
+        android:id="@+id/toolbar_registrasi"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+
+        <ImageButton
+            android:id="@+id/btn_back"
+            android:contentDescription="back button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="13dp"
+            android:src="@drawable/baseline_arrow_back_30"
+            android:layout_centerVertical="true"
+            android:background="@android:color/transparent"/>
+    </RelativeLayout>
+
+    <!-- content -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar_registrasi"
+        android:paddingBottom="16dp"
+        android:paddingEnd="16dp"
+        android:paddingStart="16dp">
+
+        <!-- heading text 1 -->
+        <TextView
+            android:id="@+id/heading_registrasi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_heading_registrasi"
+            android:textSize="25sp"
+            android:fontFamily="@font/cabin_bold"/>
+
+        <!-- heading text 2 -->
+        <TextView
+            android:id="@+id/heading2_registrasi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_heading2_registrasi"
+            android:textSize="15sp"
+            android:fontFamily="@font/cabin_semibold"
+            android:layout_below="@id/heading_registrasi"/>
+
+        <!-- input email -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_email_register"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/heading2_registrasi">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/e_mail"
+                android:inputType="textEmailAddress" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <!-- input password -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_password_register"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/input_email_register">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/password"
+                android:inputType="textPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- input confirm password -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_confirmPassword_register"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/input_password_register">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/confirm_password"
+                android:inputType="textPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- register button -->
+        <android.widget.Button
+            android:id="@+id/btn_daftar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="35dp"
+            android:layout_marginBottom="12dp"
+            android:height="44dp"
+            android:background="@drawable/rounded_bg_button_primary"
+            android:elevation="6dp"
+            android:fontFamily="@font/cabin_semibold_italic"
+            android:text="Daftar"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:layout_below="@id/input_confirmPassword_register"/>
+
+        <!-- cute catto image -->
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btn_daftar"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="80dp"
+            android:src="@drawable/cat_stretching" />
+    </RelativeLayout>
+</RelativeLayout>

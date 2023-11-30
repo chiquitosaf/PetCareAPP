@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">PetCareAPP</string>
+    <string name="skip">Skip</string>
+    <string name="next">Next</string>
+    <string name="heading_onboarding_first">Halo teman!</string>
+    <string name="description_onboarding_first">Bingung nyari tempat kebutuhan anabul tersayang?</string>
+    <string name="heading_onboarding_second">Grooming</string>
+    <string name="description_onboarding_second">Pesen layanan Grooming PetCare biar si lucu tetep rapi, bersih, dan wangi!</string>
+    <string name="heading_onboarding_third">Pet Shop</string>
+    <string name="description_onboarding_third">Beli semua kebutuhan hewanmu disini!</string>
+    <string name="heading_onboarding_fourth">PetCare!</string>
+    <string name="description_onboarding_fourth">Mulai perawatan hewanmu sekarang!</string>
+    <string name="login_disini"><u><b>login disini!</b></u></string>
+    <string name="sudah_punya_akun">Sudah punya akun?</string>
+    <string name="disini_tempatnya">Disini tempatnya!</string>
+
+
+    <string name="desc_grooming_2">Biar tetep enak buat dipeluk</string>
+
+    <string name="btn_daftar_sekarang">Daftar Sekarang!</string>
+
+
+    <string name="txt_heading_login">Selamat datang kembali teman!</string>
+    <string name="txt_heading2_login">Log in sekarang untuk masuk ke PetCare!</string>
+    <string name="e_mail">E-mail</string>
+    <string name="password">Password</string>
+    <string name="log_in">Log in</string>
+
+
+    <string name="belum_punya_akun">Belum punya akun?</string>
+    <string name="daftar_disini"><u>Daftar disini!</u></string>
+    <string name="txt_heading_registrasi">Selamat datang teman baru!</string>
+    <string name="txt_heading2_registrasi">Daftar sekarang untuk membuat akun</string>
+    <string name="confirm_password">Confirm Password</string>
+
+    <string name="beranda">Beranda</string>
+    <string name="akun">Akun</string>
+    <string name="pesanan">Pesanan</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

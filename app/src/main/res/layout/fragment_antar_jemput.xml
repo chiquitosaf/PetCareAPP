@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".grooming.AntarJemputFragment">
+
+    <TextView
+        android:id="@+id/label_input_tanggal_grooming_antarjemput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tanggal"
+        android:textSize="20sp"
+        android:fontFamily="@font/cabin"
+        android:layout_marginTop="20dp"
+        />
+    <RelativeLayout
+        android:id="@+id/container_input_tanggal_grooming_antarjemput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/label_input_tanggal_grooming_antarjemput">
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_input_tanggal_grooming_antarjemput"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hintEnabled="false">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/input_tanggal_grooming_antarjemput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="bookdate"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:inputType="date"
+                android:textColorHint="@color/textColor" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:labelFor="@id/input_tanggal_grooming_antarjemput"
+            android:id="@+id/txt_input_tanggal_grooming_antarjemput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/layout_input_tanggal_grooming_antarjemput"
+            android:layout_alignBottom="@+id/layout_input_tanggal_grooming_antarjemput"
+            android:text="--Pilih--"
+            android:fontFamily="@font/cabin"
+            android:padding="12dp"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/label_input_waktu_grooming_antarjemput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Waktu"
+        android:textSize="20sp"
+        android:fontFamily="@font/cabin"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/container_input_tanggal_grooming_antarjemput" />
+    <RelativeLayout
+        android:id="@+id/container_input_waktu_grooming_antarjemput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/label_input_waktu_grooming_antarjemput">
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_input_waktu_grooming_antarjemput"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hintEnabled="false">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/input_waktu_grooming_antarjemput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="bookdate"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:inputType="time"
+                android:textColorHint="@color/textColor" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:labelFor="@id/input_waktu_grooming_antarjemput"
+            android:id="@+id/txt_input_waktu_grooming_antarjemput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/layout_input_waktu_grooming_antarjemput"
+            android:layout_alignBottom="@+id/layout_input_waktu_grooming_antarjemput"
+            android:text="--Pilih--"
+            android:fontFamily="@font/cabin"
+            android:padding="12dp"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/label_input_alamat_grooming_antarjemput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Alamat"
+        android:textSize="20sp"
+        android:fontFamily="@font/cabin"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/container_input_waktu_grooming_antarjemput" />
+    <RelativeLayout
+        android:id="@+id/container_input_alamat_grooming_antarjemput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/label_input_alamat_grooming_antarjemput">
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_input_alamat_grooming_antarjemput"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hintEnabled="false">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/input_alamat_grooming_antarjemput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="postalAddress"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:inputType="textPostalAddress"
+                android:textColorHint="@color/textColor" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:labelFor="@id/input_alamat_grooming_antarjemput"
+            android:id="@+id/txt_input_alamat_grooming_antarjemput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/layout_input_alamat_grooming_antarjemput"
+            android:layout_alignBottom="@+id/layout_input_alamat_grooming_antarjemput"
+            android:text="--Pilih--"
+            android:fontFamily="@font/cabin"
+            android:padding="12dp"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+
+</RelativeLayout>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- viewpager -->
+    <androidx.viewpager.widget.ViewPager
+        android:contentDescription="viewpager"
+        android:id="@+id/viewpager_onboarding"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+    
+    <!-- content -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="15dp">
+
+        <!-- registration page button -->
+        <android.widget.Button
+            android:visibility="invisible"
+            android:id="@+id/btn_daftar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:width="288dp"
+            android:height="44dp"
+            android:background="@drawable/rounded_bg_button"
+            android:elevation="6dp"
+            android:fontFamily="@font/cabin_semibold_italic"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="@string/btn_daftar_sekarang"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/btnTextColor"
+            android:textSize="20sp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            />
+
+        <!-- already has an account text -->
+        <TextView
+            android:visibility="invisible"
+            android:id="@+id/txt_sudah_punya_akun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/cabin_semibold"
+            android:gravity="center_horizontal"
+            android:text="@string/sudah_punya_akun"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:layout_marginTop="13dp"
+            android:layout_marginStart="32dp"
+            android:layout_below="@id/btn_daftar" />
+
+        <!-- login page button -->
+        <TextView
+            android:visibility="invisible"
+            android:id="@+id/txt_login_disini"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/cabin_semibold"
+            android:text="@string/login_disini"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:layout_marginTop="13dp"
+            android:layout_marginStart="3dp"
+            android:layout_toEndOf="@id/txt_sudah_punya_akun"
+            android:layout_below="@id/btn_daftar"/>
+
+        <!-- skip button -->
+        <android.widget.Button
+            android:id="@+id/btn_skip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:width="120dp"
+            android:height="40dp"
+            android:background="@drawable/rounded_bg_button"
+            android:fontFamily="@font/cabin_semibold_italic"
+            android:text="@string/skip"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/btnTextColor"
+            android:textSize="20sp"
+            android:elevation="6dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            />
+
+        <!-- next button -->
+        <android.widget.Button
+            android:id="@+id/btn_next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:width="120dp"
+            android:height="40dp"
+            android:background="@drawable/rounded_bg_button"
+            android:fontFamily="@font/cabin_semibold_italic"
+            android:text="@string/next"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/btnTextColor"
+            android:textSize="20sp"
+            android:elevation="6dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            />
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

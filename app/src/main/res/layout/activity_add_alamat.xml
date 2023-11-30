@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundColor"
+    tools:context=".alamat.AddAlamat"
+    android:orientation="vertical"
+    >
+
+    <!-- toolbar -->
+    <RelativeLayout
+        android:id="@+id/toolbar_add_alamat"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/backgroundColor">
+
+        <!-- back button -->
+        <ImageButton
+            android:id="@+id/btn_back_add_alamat"
+            android:contentDescription="back button add alamat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="13dp"
+            android:src="@drawable/baseline_arrow_back_30"
+            android:layout_centerVertical="true"
+            android:background="@android:color/transparent"/>
+        
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/btn_back_add_alamat"
+            android:text="Tambah Alamat"
+            android:textSize="25sp"
+            android:fontFamily="@font/cabin_semibold"
+            android:layout_centerVertical="true" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="13dp">
+
+        <!-- input tag -->
+        <TextView
+            android:id="@+id/label_input_tag"
+            android:labelFor="@id/input_tag"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tag Alamat"
+            android:textSize="20sp"
+            android:fontFamily="@font/cabin" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_tag_add_alamat"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/label_input_tag"
+            app:hintEnabled="false">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/input_tag"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Ex: Rumah, Kantor, Kos"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- input alamat -->
+        <TextView
+            android:labelFor="@id/input_alamat"
+            android:id="@+id/heading_input_alamat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Alamat Lengkap"
+            android:textSize="20sp"
+            android:fontFamily="@font/cabin"
+            android:layout_below="@id/input_tag_add_alamat"
+            android:layout_marginTop="20dp"/>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_desc_add_alamat"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/heading_input_alamat">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/input_alamat"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:inputType="text"
+                android:gravity="start"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- login button -->
+        <android.widget.Button
+            android:id="@+id/btn_tambah_alamat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="35dp"
+            android:layout_marginBottom="12dp"
+            android:height="44dp"
+            android:background="@drawable/rounded_bg_button_primary"
+            android:elevation="6dp"
+            android:fontFamily="@font/cabin_semibold_italic"
+            android:text="Tambahkan alamat"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:layout_below="@id/input_desc_add_alamat"/>
+
+    </RelativeLayout>
+</LinearLayout>
