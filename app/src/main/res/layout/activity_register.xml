@@ -51,9 +51,9 @@
             android:fontFamily="@font/cabin_semibold"
             android:layout_below="@id/heading_registrasi"/>
 
-        <!-- input email -->
+        <!-- input nama -->
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/input_email_register"
+            android:id="@+id/input_nama_register"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -61,6 +61,24 @@
             android:layout_below="@id/heading2_registrasi">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/nama_register"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nama"
+                android:inputType="textPersonName" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- input email -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_email_register"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/input_nama_register">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/email_register"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/e_mail"
@@ -78,25 +96,10 @@
             android:layout_below="@id/input_email_register">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/password_register"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/password"
-                android:inputType="textPassword" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <!-- input confirm password -->
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/input_confirmPassword_register"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_below="@id/input_password_register">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/confirm_password"
                 android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -117,7 +120,7 @@
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="20sp"
-            android:layout_below="@id/input_confirmPassword_register"/>
+            android:layout_below="@id/input_password_register"/>
 
         <!-- cute catto image -->
         <ImageView

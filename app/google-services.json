@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "972178041718",
+    "project_id": "petcareapp-85cfe",
+    "storage_bucket": "petcareapp-85cfe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:972178041718:android:e57097c18e220c72b86857",
+        "android_client_info": {
+          "package_name": "com.chiquito.petcareapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQkxczlkihuK_ew1087mUHA0OK364cDOo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
