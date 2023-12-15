@@ -1,4 +1,4 @@
-package com.chiquito.petcareapp.auth;
+package com.chiquito.petcareapp.Controller.auth;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,9 +9,10 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.chiquito.petcareapp.Home;
+import com.chiquito.petcareapp.Controller.Home;
+import com.chiquito.petcareapp.Controller.MainActivity;
 import com.chiquito.petcareapp.R;
-import com.chiquito.petcareapp.onboarding.OnBoarding;
+import com.chiquito.petcareapp.Controller.onboarding.OnBoarding;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -59,11 +60,11 @@ public class Login extends AppCompatActivity {
             auth.signInWithEmailAndPassword(emailText, passwordText)
                     .addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
-                            Intent intent = new Intent(Login.this, Home.class);
+                            Intent intent = new Intent(Login.this, MainActivity.class);
                             startActivity(intent);
                             finish();
                         }else{
-                            Toast.makeText(Login.this, "Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Login.this, "Email atau Password yang dimasukkan salah!", Toast.LENGTH_SHORT).show();
                         }
                     });
         }else{

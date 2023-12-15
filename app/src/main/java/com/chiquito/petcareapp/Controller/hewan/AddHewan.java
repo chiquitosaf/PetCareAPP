@@ -1,6 +1,4 @@
-package com.chiquito.petcareapp.hewan;
-
-import static androidx.core.content.ContentProviderCompat.requireContext;
+package com.chiquito.petcareapp.Controller.hewan;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
@@ -19,6 +17,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.chiquito.petcareapp.Model.Hewan;
 import com.chiquito.petcareapp.R;
 
 

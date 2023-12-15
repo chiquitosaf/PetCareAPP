@@ -1,12 +1,12 @@
-package com.chiquito.petcareapp.hewan;
+package com.chiquito.petcareapp.Model;
 
 import java.util.Date;
 
 public class Hewan {
-    enum JenisKelamin{
+    public enum JenisKelamin{
         Jantan, Betina
     }
-    enum Spesies{
+    public enum Spesies{
         Kucing, Anjing;
     }
 

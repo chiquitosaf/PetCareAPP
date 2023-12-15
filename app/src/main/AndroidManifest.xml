@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -14,31 +15,37 @@
         android:theme="@style/Theme.PetCareAPP"
         tools:targetApi="31">
         <activity
-            android:name=".grooming.Grooming"
+            android:name=".Controller.paket.ListPaket"
             android:exported="false" />
         <activity
-            android:name=".hewan.AddHewan"
+            android:name=".Controller.HomeAdminFragment"
             android:exported="false" />
         <activity
-            android:name=".hewan.RecycleViewHewan"
+            android:name=".Controller.grooming.Grooming"
+            android:exported="true" />
+        <activity
+            android:name=".Controller.hewan.AddHewan"
             android:exported="false" />
         <activity
-            android:name=".alamat.AddAlamat"
+            android:name=".Controller.hewan.RecycleViewHewan"
             android:exported="false" />
         <activity
-            android:name=".alamat.RecycleViewAlamat"
+            android:name=".Controller.alamat.AddAlamat"
             android:exported="false" />
         <activity
-            android:name=".Home"
+            android:name=".Controller.alamat.RecycleViewAlamat"
+            android:exported="true" />
+        <activity
+            android:name=".Controller.Home"
             android:exported="false" />
         <activity
-            android:name=".auth.Login"
+            android:name=".Controller.auth.Login"
+            android:exported="true" />
+        <activity
+            android:name=".Controller.auth.Register"
             android:exported="false" />
         <activity
-            android:name=".auth.Register"
-            android:exported="false" />
-        <activity
-            android:name=".onboarding.OnBoarding"
+            android:name=".Controller.onboarding.OnBoarding"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -46,6 +53,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".Controller.MainActivity"
+            android:exported="true" />
     </application>
 
 </manifest>

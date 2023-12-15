@@ -4,7 +4,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@color/white">
 
     <!-- toolbar -->
     <RelativeLayout
@@ -39,7 +40,8 @@
             android:layout_height="wrap_content"
             android:text="@string/txt_heading_registrasi"
             android:textSize="25sp"
-            android:fontFamily="@font/cabin_bold"/>
+            android:fontFamily="@font/cabin_bold"
+            android:textColor="@color/black"/>
 
         <!-- heading text 2 -->
         <TextView
@@ -49,7 +51,8 @@
             android:text="@string/txt_heading2_registrasi"
             android:textSize="15sp"
             android:fontFamily="@font/cabin_semibold"
-            android:layout_below="@id/heading_registrasi"/>
+            android:layout_below="@id/heading_registrasi"
+            android:textColor="@color/black"/>
 
         <!-- input nama -->
         <com.google.android.material.textfield.TextInputLayout
@@ -58,14 +61,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:layout_below="@id/heading2_registrasi">
+            android:layout_below="@id/heading2_registrasi"
+            app:boxStrokeColor="@color/light_gray">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/nama_register"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Nama"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:textColorHint="@color/dark_grey"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- input email -->
@@ -75,14 +80,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:layout_below="@id/input_nama_register">
+            android:layout_below="@id/input_nama_register"
+            app:boxStrokeColor="@color/light_gray">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/email_register"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/e_mail"
-                android:inputType="textEmailAddress" />
+                android:inputType="textEmailAddress"
+                android:textColorHint="@color/black"/>
         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -93,14 +100,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:layout_below="@id/input_email_register">
+            android:layout_below="@id/input_email_register"
+            app:boxStrokeColor="@color/light_gray">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/password_register"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/password"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:textColorHint="@color/dark_grey"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- register button -->

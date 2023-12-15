@@ -1,4 +1,4 @@
-package com.chiquito.petcareapp.onboarding;
+package com.chiquito.petcareapp.Controller.onboarding;
 
 import android.content.Context;
 import android.view.LayoutInflater;

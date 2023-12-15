@@ -1,4 +1,4 @@
-package com.chiquito.petcareapp.hewan;
+package com.chiquito.petcareapp.Controller.hewan;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
@@ -6,9 +6,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
 import android.widget.ImageButton;
 
+import com.chiquito.petcareapp.Model.Hewan;
 import com.chiquito.petcareapp.R;
 
 import java.util.ArrayList;

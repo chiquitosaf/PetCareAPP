@@ -4,11 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".grooming.Grooming"
+    tools:context=".Controller.grooming.Grooming"
     android:background="@color/backgroundColor"
     android:orientation="vertical">
     
-    <!-- Toolbar -->
     <!-- toolbar -->
     <RelativeLayout
         android:id="@+id/toolbar_grooming"
@@ -44,33 +43,14 @@
         android:orientation="vertical"
         android:paddingTop="13dp">
 
-        <com.google.android.material.tabs.TabLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:id="@+id/tabLayout_grooming"
-            android:layout_marginEnd="13dp"
-            android:layout_marginStart="13dp"
-            app:tabMode="fixed"
-            app:tabGravity="fill"
-            app:tabIndicatorGravity="stretch"
-            app:tabSelectedTextColor="@color/colorPrimary"
-            app:tabIndicatorAnimationMode="linear"
-            app:tabIndicator="@drawable/tab_indicator_grooming"
-            app:tabIndicatorColor="@color/white"
-            app:tabTextColor="@color/white"
-            android:background="@drawable/tab_layout_bg"
-            app:tabIndicatorFullWidth="true"
-            app:tabIndicatorHeight="2dp"
-            app:tabTextAppearance="@style/TabLayoutStyle" />
+            android:layout_height="match_parent"
+            android:layout_above="@id/btn_lanjut"
+            android:id="@+id/container_grooming">
 
-        <androidx.viewpager2.widget.ViewPager2
-            android:layout_width="match_parent"
-            android:layout_height="580dp"
-            android:layout_marginEnd="13dp"
-            android:layout_marginStart="13dp"
-            android:id="@+id/viewPager_grooming"
-            android:layout_marginTop="20dp"
-            android:layout_below="@id/tabLayout_grooming"/>
+
+        </RelativeLayout>
 
         <android.widget.Button
             android:id="@+id/btn_lanjut"

@@ -1,4 +1,4 @@
-package com.chiquito.petcareapp.onboarding;
+package com.chiquito.petcareapp.Controller.onboarding;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,9 +13,13 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
-import com.chiquito.petcareapp.auth.Login;
+import com.chiquito.petcareapp.Controller.Home;
+import com.chiquito.petcareapp.Controller.MainActivity;
+import com.chiquito.petcareapp.Controller.auth.Login;
 import com.chiquito.petcareapp.R;
-import com.chiquito.petcareapp.auth.Register;
+import com.chiquito.petcareapp.Controller.auth.Register;
+import com.google.firebase.Firebase;
+import com.google.firebase.auth.FirebaseAuth;
 
 //main onboarding activity that holds the default views
 public class OnBoarding extends AppCompatActivity {
@@ -25,11 +29,17 @@ public class OnBoarding extends AppCompatActivity {
     Button btnDaftar, btnNext, btnSkip;
     TextView textSudah, textLoginDisini, textHeadingLast;
     Animation animationAppear, animationDisappear;
+    FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        firebaseAuth = FirebaseAuth.getInstance();
 
+//        if(firebaseAuth.getCurrentUser() != null){
+//            startActivity(new Intent(OnBoarding.this, MainActivity.class));
+//            finish();
+//        }
         //hide status bar
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_onboarding);

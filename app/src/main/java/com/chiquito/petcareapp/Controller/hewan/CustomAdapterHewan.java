@@ -1,4 +1,4 @@
-package com.chiquito.petcareapp.hewan;
+package com.chiquito.petcareapp.Controller.hewan;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.chiquito.petcareapp.Model.Hewan;
 import com.chiquito.petcareapp.R;
 
 import java.util.List;

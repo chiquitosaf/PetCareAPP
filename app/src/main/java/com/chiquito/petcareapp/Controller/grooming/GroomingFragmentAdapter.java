@@ -1,4 +1,4 @@
-package com.chiquito.petcareapp.grooming;
+package com.chiquito.petcareapp.Controller.grooming;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;

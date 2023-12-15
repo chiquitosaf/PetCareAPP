@@ -1,4 +1,4 @@
-package com.chiquito.petcareapp.alamat;
+package com.chiquito.petcareapp.Model;
 
 public class Alamat {
     private String tag, alamatLengkap;

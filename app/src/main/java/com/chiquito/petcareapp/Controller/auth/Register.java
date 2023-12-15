@@ -1,4 +1,4 @@
-package com.chiquito.petcareapp.auth;
+package com.chiquito.petcareapp.Controller.auth;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,17 +11,14 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.chiquito.petcareapp.Home;
 import com.chiquito.petcareapp.R;
-import com.chiquito.petcareapp.models.UserModel;
-import com.chiquito.petcareapp.onboarding.OnBoarding;
+import com.chiquito.petcareapp.Model.Customer;
+import com.chiquito.petcareapp.Controller.onboarding.OnBoarding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class Register extends AppCompatActivity {
@@ -107,9 +104,9 @@ public class Register extends AppCompatActivity {
                         //Check if success
                         if (task.isSuccessful()) {
                             //Save user to database
-                            UserModel userModel = new UserModel(userNama, userEmail, userPassword);
+                            Customer customer = new Customer(userNama, userEmail, userPassword);
                             String id = task.getResult().getUser().getUid();
-                            database.getReference().child("Customer").child(id).setValue(userModel);
+                            database.getReference().child("Customer").child(id).setValue(customer);
                             Toast.makeText(Register.this, "Registrasi Berhasil", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(Register.this, Login.class));
                             finish();

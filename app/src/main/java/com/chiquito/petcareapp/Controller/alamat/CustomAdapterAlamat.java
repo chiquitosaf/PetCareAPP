@@ -1,4 +1,4 @@
-package com.chiquito.petcareapp.alamat;
+package com.chiquito.petcareapp.Controller.alamat;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.chiquito.petcareapp.Model.Alamat;
 import com.chiquito.petcareapp.R;
 
 import java.util.List;
@@ -33,7 +34,7 @@ public class CustomAdapterAlamat extends RecyclerView.Adapter<CustomViewHolderAl
     @Override
     public void onBindViewHolder(@NonNull CustomViewHolderAlamat holder, @SuppressLint("RecyclerView") int position) {
         holder.tag.setText(list.get(position).getTag());
-        holder.alamat.setText(list.get(position).getAlamatLengkap());
+//        holder.alamat.setText(list.get(position).getAlamatLengkap());
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

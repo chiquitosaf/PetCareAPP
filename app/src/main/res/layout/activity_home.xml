@@ -252,5 +252,6 @@
         app:itemIconTint="@drawable/sel_menu_icon"
         android:layout_alignParentBottom="true"
         app:menu="@menu/bottom_navigation_menu"
-        android:elevation="4dp"/>
+        android:elevation="4dp"
+        app:itemActiveIndicatorStyle="@style/App.Custom.Indicator"/>
 </RelativeLayout>

@@ -6,12 +6,12 @@
         android:title="@string/beranda" />
 
     <item
-        android:id="@+id/profile"
+        android:id="@+id/akun"
         android:icon="@drawable/user"
         android:title="@string/akun"/>
 
     <item
-        android:id="@+id/pesanan"
+        android:id="@+id/histori"
         android:icon="@drawable/receipt"
-        android:title="@string/pesanan"/>
+        android:title="Histori"/>
 </menu>

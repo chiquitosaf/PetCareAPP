@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backgroundColor"
-    tools:context=".alamat.AddAlamat"
+    tools:context=".Controller.alamat.AddAlamat"
     android:orientation="vertical"
     >
 
@@ -28,13 +28,15 @@
             android:background="@android:color/transparent"/>
         
         <TextView
+            android:id="@+id/title_tambahAlamat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toEndOf="@id/btn_back_add_alamat"
             android:text="Tambah Alamat"
             android:textSize="25sp"
             android:fontFamily="@font/cabin_semibold"
-            android:layout_centerVertical="true" />
+            android:layout_centerVertical="true"
+            android:textColor="@color/black"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -45,25 +47,30 @@
         <!-- input tag -->
         <TextView
             android:id="@+id/label_input_tag"
-            android:labelFor="@id/input_tag"
+            android:labelFor="@id/input_tag_alamat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Tag Alamat"
             android:textSize="20sp"
-            android:fontFamily="@font/cabin" />
+            android:fontFamily="@font/cabin"
+            android:textColor="@color/black"/>
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/input_tag_add_alamat"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/label_input_tag"
-            app:hintEnabled="false">
+            app:hintEnabled="false"
+            app:boxStrokeColor="@color/light_gray"
+            >
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/input_tag"
+                android:id="@+id/input_tag_alamat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Ex: Rumah, Kantor, Kos"
-                android:inputType="text" />
+                android:inputType="text"
+                android:textColorHint="@color/dark_grey"
+                android:textColor="@color/black"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- input alamat -->
@@ -76,19 +83,22 @@
             android:textSize="20sp"
             android:fontFamily="@font/cabin"
             android:layout_below="@id/input_tag_add_alamat"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginTop="20dp"
+            android:textColor="@color/black"/>
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/input_desc_add_alamat"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/heading_input_alamat">
+            android:layout_below="@id/heading_input_alamat"
+            app:boxStrokeColor="@color/light_gray">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/input_alamat"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:inputType="text"
-                android:gravity="start"/>
+                android:gravity="start"
+                android:textColor="@color/black"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- login button -->

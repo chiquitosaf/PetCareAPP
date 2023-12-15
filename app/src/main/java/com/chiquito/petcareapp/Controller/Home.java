@@ -1,4 +1,4 @@
-package com.chiquito.petcareapp;
+package com.chiquito.petcareapp.Controller;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -7,9 +7,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.chiquito.petcareapp.alamat.RecycleViewAlamat;
-import com.chiquito.petcareapp.grooming.Grooming;
-import com.chiquito.petcareapp.hewan.RecycleViewHewan;
+import com.chiquito.petcareapp.Controller.alamat.RecycleViewAlamat;
+import com.chiquito.petcareapp.Controller.grooming.Grooming;
+import com.chiquito.petcareapp.Controller.hewan.RecycleViewHewan;
+import com.chiquito.petcareapp.R;
 
 public class Home extends AppCompatActivity {
 

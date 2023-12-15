@@ -1,9 +1,9 @@
-package com.chiquito.petcareapp.models;
+package com.chiquito.petcareapp.Model;
 
-public class UserModel {
+public class Customer {
     String name, email, password;
 
-    public UserModel(String name, String email, String password) {
+    public Customer(String name, String email, String password) {
         this.name = name;
         this.email = email;
         this.password = password;
