@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Controller.HistoriFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".Controller.grooming.GroomingFragmentMethod">
+
+        <com.google.android.material.tabs.TabLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:id="@+id/tabLayout_histori"
+            android:layout_marginEnd="13dp"
+            android:layout_marginStart="13dp"
+            app:tabMode="fixed"
+            app:tabGravity="fill"
+            app:tabIndicatorGravity="stretch"
+            app:tabSelectedTextColor="@color/colorPrimary"
+            app:tabIndicatorAnimationMode="linear"
+            app:tabIndicator="@drawable/tab_indicator_grooming"
+            app:tabIndicatorColor="@color/white"
+            app:tabTextColor="@color/white"
+            android:background="@drawable/tab_layout_bg"
+            app:tabIndicatorFullWidth="true"
+            app:tabIndicatorHeight="2dp"
+            app:tabTextAppearance="@style/TabLayoutStyle" />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="13dp"
+            android:layout_marginStart="13dp"
+            android:id="@+id/viewPager_histori"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/tabLayout_histori"/>
+
+    </RelativeLayout>
+
+</FrameLayout>

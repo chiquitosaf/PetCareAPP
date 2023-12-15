@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Controller.AkunFragment"
+    android:background="@color/backgroundColor"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Profil Akun"
+            android:fontFamily="@font/cabin_bold"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            android:layout_toEndOf="@id/profile_photo"
+            android:layout_centerVertical="true" />
+        
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="30dp">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="13dp">
+
+                <RelativeLayout
+                    android:id="@+id/profile_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/profile_photo"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:src="@mipmap/ic_profile"
+                        android:layout_alignParentStart="true"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nama"
+                        android:fontFamily="@font/cabin_bold"
+                        android:textColor="@color/black"
+                        android:textSize="25sp"
+                        android:layout_toEndOf="@id/profile_photo"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="10dp"/>
+
+                </RelativeLayout>
+
+                <android.widget.Button
+                    android:id="@+id/btn_edit_profile"
+                    android:layout_width="280dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="12dp"
+                    android:height="44dp"
+                    android:background="@drawable/rounded_bg_button_primary"
+                    android:elevation="6dp"
+                    android:fontFamily="@font/cabin_semibold_italic"
+                    android:text="Edit Profil"
+                    android:textAlignment="center"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:layout_below="@+id/profile_name"
+                    android:layout_centerHorizontal="true"/>
+                
+                <RelativeLayout
+                    android:id="@+id/data_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/btn_edit_profile">
+
+                    <TextView
+                        android:id="@+id/label_email_profile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Email"
+                        android:fontFamily="@font/cabin_bold"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/textView_email_profile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="EmailUser"
+                        android:fontFamily="@font/cabin_semibold"
+                        android:textSize="16sp"
+                        android:layout_below="@id/label_email_profile" />
+
+                    <TextView
+                        android:id="@+id/label_password_profile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Password"
+                        android:fontFamily="@font/cabin_bold"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        android:layout_below="@id/textView_email_profile"
+                        android:layout_marginTop="10dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="PasswordUser"
+                        android:fontFamily="@font/cabin_semibold"
+                        android:textSize="16sp"
+                        android:layout_below="@id/label_password_profile" />
+                </RelativeLayout>
+
+                <android.widget.Button
+                    android:id="@+id/btn_alamat_profile"
+                    android:layout_width="150dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="12dp"
+                    android:height="44dp"
+                    android:background="@drawable/rounded_bg_button_primary"
+                    android:elevation="6dp"
+                    android:fontFamily="@font/cabin_semibold_italic"
+                    android:text="Cek Alamatmu"
+                    android:textAlignment="center"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:layout_below="@+id/data_profile"
+                    android:layout_alignParentStart="true"/>
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <android.widget.Button
+            android:id="@+id/btn_logout_profile"
+            android:layout_width="280dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="12dp"
+            android:height="44dp"
+            android:background="#8B0000"
+            android:elevation="6dp"
+            android:fontFamily="@font/cabin_semibold_italic"
+            android:text="Logout"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+</FrameLayout>
