@@ -36,10 +36,10 @@ public class OnBoarding extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         firebaseAuth = FirebaseAuth.getInstance();
 
-//        if(firebaseAuth.getCurrentUser() != null){
-//            startActivity(new Intent(OnBoarding.this, MainActivity.class));
-//            finish();
-//        }
+        if(firebaseAuth.getCurrentUser() != null){
+            startActivity(new Intent(OnBoarding.this, MainActivity.class));
+            finish();
+        }
         //hide status bar
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_onboarding);

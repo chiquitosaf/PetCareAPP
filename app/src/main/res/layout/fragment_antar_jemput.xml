@@ -142,6 +142,22 @@
             android:fontFamily="@font/cabin"
             android:padding="12dp"
             android:textSize="16sp" />
+
+        <android.widget.Button
+            android:id="@+id/btn_lanjut"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@color/colorPrimary"
+            android:elevation="6dp"
+            android:fontFamily="@font/cabin_semibold_italic"
+            android:text="Lanjut"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:layout_alignParentBottom="true" />
     </RelativeLayout>
 
 

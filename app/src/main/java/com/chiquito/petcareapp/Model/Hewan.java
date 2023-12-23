@@ -1,7 +1,13 @@
 package com.chiquito.petcareapp.Model;
 
-import java.util.Date;
+import android.os.Parcelable;
 
+import org.parceler.Parcel;
+import org.parceler.ParcelConstructor;
+
+import java.util.Calendar;
+import java.util.Date;
+@Parcel
 public class Hewan {
     public enum JenisKelamin{
         Jantan, Betina
@@ -10,10 +16,11 @@ public class Hewan {
         Kucing, Anjing;
     }
 
-    String namaHewan, warnaHewan, keterangan, ras;
+    String namaHewan, warnaHewan, keterangan, ras, urlImage;
     JenisKelamin jenisKelamin;
     Spesies spesies;
-    Date tanggalLahir;
+    String tanggalLahir;
+
 
     public String getRas() {
         return ras;
@@ -22,8 +29,9 @@ public class Hewan {
     public void setRas(String ras) {
         this.ras = ras;
     }
-
-    public Hewan(String namaHewan, String warnaHewan, String keterangan, String ras, JenisKelamin jenisKelamin, Spesies spesies, Date tanggalLahir) {
+    @ParcelConstructor
+    public Hewan(String namaHewan, String warnaHewan, String keterangan, String ras,
+                 JenisKelamin jenisKelamin, Spesies spesies, String tanggalLahir, String urlImage) {
         this.namaHewan = namaHewan;
         this.warnaHewan = warnaHewan;
         this.keterangan = keterangan;
@@ -31,6 +39,7 @@ public class Hewan {
         this.jenisKelamin = jenisKelamin;
         this.spesies = spesies;
         this.tanggalLahir = tanggalLahir;
+        this.urlImage = urlImage;
     }
 
     public String getNamaHewan() {
@@ -73,11 +82,19 @@ public class Hewan {
         this.spesies = spesies;
     }
 
-    public Date getTanggalLahir() {
+    public String getTanggalLahir() {
         return tanggalLahir;
     }
 
-    public void setTanggalLahir(Date tanggalLahir) {
+    public void setTanggalLahir(String tanggalLahir) {
         this.tanggalLahir = tanggalLahir;
+    }
+
+    public String getUrlImage() {
+        return urlImage;
+    }
+
+    public void setUrlImage(String urlImage) {
+        this.urlImage = urlImage;
     }
 }

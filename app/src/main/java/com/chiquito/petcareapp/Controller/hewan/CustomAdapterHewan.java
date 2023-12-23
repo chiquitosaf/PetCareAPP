@@ -1,12 +1,14 @@
 package com.chiquito.petcareapp.Controller.hewan;
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.chiquito.petcareapp.Model.Hewan;
 import com.chiquito.petcareapp.R;
 
@@ -34,6 +36,7 @@ public class CustomAdapterHewan extends RecyclerView.Adapter<CustomViewHolderHew
         holder.nama.setText(list.get(position).getNamaHewan());
         holder.spesies.setText(list.get(position).getSpesies().toString());
         holder.ras.setText(list.get(position).getRas());
+        Glide.with(context).load(list.get(position).getUrlImage()).into(holder.foto);
         holder.cardView.setOnClickListener(v -> listenerHewan.onItemClicked(list.get(position)));
     }
 

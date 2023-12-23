@@ -16,7 +16,7 @@
 
         <!-- back button -->
         <ImageButton
-            android:id="@+id/btn_back_add_hewan"
+            android:id="@+id/btn_back_detail_hewan"
             android:contentDescription="back button add alamat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -28,8 +28,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/btn_back_add_hewan"
-            android:text="Tambah Hewan"
+            android:layout_toEndOf="@id/btn_back_detail_hewan"
+            android:text="Detail Hewan"
             android:textSize="25sp"
             android:fontFamily="@font/cabin_semibold"
             android:layout_centerVertical="true" />
@@ -50,41 +50,24 @@
                 android:padding="13dp">
 
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/profile_photo_hewan"
+                    android:id="@+id/foto_detail_hewan"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:src="@mipmap/ic_profile"
                     android:layout_centerHorizontal="true"/>
 
-                <android.widget.Button
-                    android:id="@+id/btn_tambah_profile_hewan"
-                    android:layout_width="200dp"
-                    android:layout_height="48dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="12dp"
-                    android:height="44dp"
-                    android:background="@drawable/rounded_bg_button_primary"
-                    android:elevation="6dp"
-                    android:fontFamily="@font/cabin_semibold_italic"
-                    android:text="Pilih Foto Hewan"
-                    android:textAlignment="center"
-                    android:textAllCaps="false"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-                    android:layout_below="@+id/profile_photo_hewan"
-                    android:layout_centerHorizontal="true" />
+
 
                 <!-- input nama hewan -->
                 <TextView
                     android:id="@+id/label_input_nama"
-                    android:labelFor="@id/input_nama_hewan"
+                    android:labelFor="@id/input_nama_detail_hewan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Nama Hewan"
                     android:textSize="20sp"
                     android:fontFamily="@font/cabin"
-                    android:layout_below="@id/btn_tambah_profile_hewan"/>
+                    android:layout_below="@+id/foto_detail_hewan"/>
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/input_nama_add_hewan"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -93,10 +76,10 @@
                     android:layout_below="@id/label_input_nama"
                     app:hintEnabled="false">
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/input_nama_hewan"
+                        android:id="@+id/input_nama_detail_hewan"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Masukkan nama hewanmu"
+                        android:text="nama_hewan"
                         android:inputType="text" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -112,20 +95,19 @@
                     android:layout_marginTop="20dp"/>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/input_spesies_add_hewan"
+                    android:id="@+id/spesies_detail_hewan"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/label_input_spesies"
-                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
-                    <AutoCompleteTextView
-                        android:id="@+id/input_spesies_hewan"
+                    app:hintEnabled="false">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/input_spesies_detail_hewan"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="--Pilih--"
-                        android:fontFamily="@font/cabin"
-                        android:inputType="none"
-                        android:textSize="16sp"/>
+                        android:layout_height="wrap_content"
+                        android:text="spesies_hewan"
+                        android:inputType="text"
+                        android:clickable="false"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
@@ -135,7 +117,7 @@
                     android:text="Jenis Kelamin"
                     android:textSize="20sp"
                     android:fontFamily="@font/cabin"
-                    android:layout_below="@id/input_spesies_add_hewan"
+                    android:layout_below="@id/spesies_detail_hewan"
                     android:layout_marginTop="20dp"/>
 
                 <RadioGroup
@@ -143,21 +125,21 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/radio_group_jenis_kelamin"
                     android:layout_below="@id/label_input_jenis_kelamin"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:clickable="false">
 
                     <RadioButton
-                        android:id="@+id/radio_jantan"
+                        android:id="@+id/radio_jantan_detail_hewan"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Jantan"
                         android:fontFamily="@font/cabin"
                         android:textSize="16sp"
                         android:onClick="checkButton"
-                        android:checked="true"
                         android:layout_marginEnd="100dp"/>
 
                     <RadioButton
-                        android:id="@+id/radio_betina"
+                        android:id="@+id/radio_betina_detail_hewan"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Betina"
@@ -185,11 +167,12 @@
                     android:layout_below="@id/label_input_ras"
                     app:hintEnabled="false">
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/input_ras_hewan"
+                        android:id="@+id/input_ras_detail_hewan"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Masukkan ras hewanmu"
-                        android:inputType="text" />
+                        android:text="ras_hewan"
+                        android:inputType="text"
+                        android:clickable="false"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
@@ -202,18 +185,19 @@
                     android:layout_below="@id/input_ras_add_hewan"
                     android:layout_marginTop="20dp"/>
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/input_warna_add_hewan"
+                    android:id="@+id/input_warna_add_detail_hewan"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/label_input_warna"
                     app:hintEnabled="false">
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/input_warna_hewan"
+                        android:id="@+id/input_warna_detail_hewan"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Masukkan warna hewanmu"
-                        android:inputType="text" />
+                        android:text="warna_hewan"
+                        android:inputType="text"
+                        android:clickable="false"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
@@ -224,14 +208,14 @@
                     android:textSize="20sp"
                     android:fontFamily="@font/cabin"
                     android:layout_marginTop="20dp"
-                    android:layout_below="@id/input_warna_add_hewan"/>
+                    android:layout_below="@id/input_warna_add_detail_hewan"/>
                 <RelativeLayout
                     android:id="@+id/container_input_tanggal_lahir"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/label_input_datebirth">
                     <EditText
-                        android:id="@+id/input_tanggal_lahir"
+                        android:id="@+id/input_tanggal_lahir_detail_hewan"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="3dp"
@@ -243,14 +227,15 @@
                         android:focusableInTouchMode="false"
                         android:inputType="date"
                         android:padding="12dp"
-                        android:textColorHint="@color/textColor" />
+                        android:textColorHint="@color/textColor"
+                        android:enabled="false"/>
                     <TextView
-                        android:labelFor="@id/input_tanggal_lahir"
+                        android:labelFor="@id/input_tanggal_lahir_detail_hewan"
                         android:id="@+id/txt_input_tanggal_lahir"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignBaseline="@id/input_tanggal_lahir"
-                        android:layout_alignBottom="@id/input_tanggal_lahir"
+                        android:layout_alignBaseline="@id/input_tanggal_lahir_detail_hewan"
+                        android:layout_alignBottom="@id/input_tanggal_lahir_detail_hewan"
                         android:text="Masukkan tanggal lahir hewanmu"
                         android:fontFamily="@font/cabin"
                         android:padding="12dp"
@@ -258,7 +243,7 @@
                 </RelativeLayout>
 
                 <TextView
-                    android:labelFor="@+id/input_desc_add_hewan"
+                    android:labelFor="@+id/input_desc_detail_hewan"
                     android:id="@+id/heading_input_keterangan_hewan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -268,38 +253,76 @@
                     android:layout_below="@id/container_input_tanggal_lahir"
                     android:layout_marginTop="20dp"/>
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/input_desc_add_hewan"
+                    android:id="@+id/input_desc_detail_hewan"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/heading_input_keterangan_hewan">
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/input_keterangan_hewan"
+                        android:id="@+id/input_keterangan_detail_hewan"
                         android:layout_width="match_parent"
                         android:layout_height="150dp"
                         android:inputType="text"
-                        android:hint="Masukkan kondisi, penyakit, atau lainnya"
+                        android:text="keterangan_hewan"
                         android:gravity="start"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
-                        <!-- login button -->
+<!--                &lt;!&ndash; login button &ndash;&gt;-->
+<!--                <android.widget.Button-->
+<!--                    android:id="@+id/btn_tambah_hewan"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_marginTop="35dp"-->
+<!--                    android:layout_marginBottom="12dp"-->
+<!--                    android:height="44dp"-->
+<!--                    android:background="@drawable/rounded_bg_button_primary"-->
+<!--                    android:elevation="6dp"-->
+<!--                    android:fontFamily="@font/cabin_semibold_italic"-->
+<!--                    android:text="Tambahkan Hewan"-->
+<!--                    android:textAlignment="center"-->
+<!--                    android:textAllCaps="false"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:textSize="20sp"-->
+<!--                    android:layout_below="@+id/input_desc_add_hewan"/>-->
                 <android.widget.Button
-                    android:id="@+id/btn_tambah_hewan"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/btn_edit_detail_hewan"
+                    android:layout_width="150dp"
+                    android:layout_height="48dp"
                     android:layout_gravity="center"
-                    android:layout_marginTop="35dp"
+                    android:layout_marginTop="20dp"
                     android:layout_marginBottom="12dp"
                     android:height="44dp"
                     android:background="@drawable/rounded_bg_button_primary"
                     android:elevation="6dp"
                     android:fontFamily="@font/cabin_semibold_italic"
-                    android:text="Tambahkan Hewan"
+                    android:text="Edit Data"
                     android:textAlignment="center"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
                     android:textSize="20sp"
-                    android:layout_below="@+id/input_desc_add_hewan"/>
+                    android:layout_below="@+id/input_desc_detail_hewan"
+                    android:layout_alignParentStart="true" />
+
+
+                <android.widget.Button
+                    android:id="@+id/btn_delete_detail_hewan"
+                    android:layout_width="150dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="12dp"
+                    android:height="44dp"
+                    android:background="@drawable/rounded_bg_button_merah"
+                    android:elevation="6dp"
+                    android:fontFamily="@font/cabin_semibold_italic"
+                    android:text="Hapus Data"
+                    android:textAlignment="center"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:layout_below="@+id/input_desc_detail_hewan"
+                    android:layout_alignParentEnd="true" />
             </RelativeLayout>
         </LinearLayout>
     </ScrollView>

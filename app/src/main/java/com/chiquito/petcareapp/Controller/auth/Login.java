@@ -37,6 +37,7 @@ public class Login extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 loginUser();
             }
         });
@@ -62,6 +63,7 @@ public class Login extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Intent intent = new Intent(Login.this, MainActivity.class);
                             startActivity(intent);
+                            overridePendingTransition( R.anim.slide_in_up, R.anim.slide_out_up );
                             finish();
                         }else{
                             Toast.makeText(Login.this, "Email atau Password yang dimasukkan salah!", Toast.LENGTH_SHORT).show();

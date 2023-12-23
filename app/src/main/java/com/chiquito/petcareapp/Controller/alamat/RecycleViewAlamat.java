@@ -46,7 +46,8 @@ public class RecycleViewAlamat extends AppCompatActivity implements SelectListen
         this.btnBack = findViewById(R.id.btn_back_alamat);
 
         alamatList = new ArrayList<>();
-        this.recyclerView.setLayoutManager(new LinearLayoutManager(this,RecyclerView.VERTICAL, false));
+        this.recyclerView.setLayoutManager(new LinearLayoutManager(this,RecyclerView
+                .VERTICAL, false));
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setCancelable(false);
@@ -54,7 +55,6 @@ public class RecycleViewAlamat extends AppCompatActivity implements SelectListen
         AlertDialog dialog = builder.create();
         dialog.show();
 
-        alamatList = new ArrayList<>();
         this.customAdapterAlamat = new CustomAdapterAlamat(this, alamatList, this);
         this.recyclerView.setAdapter(customAdapterAlamat);
 

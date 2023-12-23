@@ -63,7 +63,10 @@ public class AddAlamat extends AppCompatActivity {
             String tag = inputTag.getText().toString();
             String alamat = inputAlamat.getText().toString();
             Alamat alamatClass = new Alamat(tag, alamat);
+
+            //cek dari tambah alamat atau edit alamat
             if (bundle != null){
+                //edit data
                 databaseReference.child(db.getUserID()).child(bundle.getString("tag")).removeValue();
             }
 
