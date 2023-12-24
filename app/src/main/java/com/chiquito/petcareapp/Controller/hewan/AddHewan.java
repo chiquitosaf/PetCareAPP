@@ -214,8 +214,7 @@ public class AddHewan extends AppCompatActivity {
     }
 
     public void openDateDialog(){
-//        final Calendar currentData = Calendar.getInstance();
-//        Calendar date = Calendar.getInstance();
+
         DatePickerDialog dateDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
@@ -227,11 +226,6 @@ public class AddHewan extends AppCompatActivity {
             }
 
         }, Calendar.getInstance().get(Calendar.YEAR), Calendar.getInstance().get(Calendar.MONTH), Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
-
-//        Calendar calendar = Calendar.getInstance();
-//        calendar.add(Calendar.YEAR, -20);
-//        dateDialog.getDatePicker().setMaxDate(calendar.getTimeInMillis());
-
         dateDialog.show();
     }
 

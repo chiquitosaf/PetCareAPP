@@ -6,6 +6,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
+import com.chiquito.petcareapp.ErrorFragment;
+
 public class GroomingFragmentAdapter extends FragmentStateAdapter {
 
     public GroomingFragmentAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle) {
@@ -17,12 +19,19 @@ public class GroomingFragmentAdapter extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         if (position==1){
             return new DatangFragment();
+        }else if(position == 0){
+            return new AntarJemputFragment();
+        }else{
+            return new ErrorFragment();
         }
-        return new AntarJemputFragment();
     }
 
     @Override
     public int getItemCount() {
         return 2;
     }
+
+
+
+
 }

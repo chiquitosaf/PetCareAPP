@@ -39,7 +39,7 @@ public class GroomingFragmentMethod extends Fragment {
         tabLayout.addTab(tabLayout.newTab().setText("Datang ke Tempat"));
 
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-        groomingFragmentAdapter = new GroomingFragmentAdapter(fragmentManager, getLifecycle());
+        groomingFragmentAdapter = new GroomingFragmentAdapter(getChildFragmentManager(), getLifecycle());
         viewPager.setAdapter(groomingFragmentAdapter);
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {

@@ -21,6 +21,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.parceler.Parcels;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -88,6 +90,7 @@ public class RecycleViewAlamat extends AppCompatActivity implements SelectListen
         });
 
         this.btnBack.setOnClickListener(v -> finish());
+
         this.btnAdd.setOnClickListener(v -> {
             Intent intent = new Intent(this, AddAlamat.class);
             startActivity(intent);
@@ -98,7 +101,19 @@ public class RecycleViewAlamat extends AppCompatActivity implements SelectListen
     //open pop up of detail alamat for each item
     @Override
     public void onItemClicked(Alamat alamat) {
-        CreatePopUpWindow(alamat);
+        if (getIntent().getBooleanExtra("isFromGrooming", false)) {
+//            System.out.println(alamat);
+            Intent intent = new Intent();
+////            Bundle bundle = new Bundle();
+////            bundle.putParcelable("alamat", Parcels.wrap(alamat));
+////            intent.putExtra("alamat", bundle);
+            intent.putExtra("tag", alamat.getTag());
+            intent.putExtra("alamatLengkap", alamat.getAlamatLengkap());
+            setResult(RESULT_OK, intent);
+            finish();
+        } else{
+            CreatePopUpWindow(alamat);
+        }
     }
 
     private void CreatePopUpWindow(Alamat alamat) {
