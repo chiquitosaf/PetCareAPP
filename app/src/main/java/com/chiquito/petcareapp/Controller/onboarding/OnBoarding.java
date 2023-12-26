@@ -71,7 +71,7 @@ public class OnBoarding extends AppCompatActivity {
         btnSkip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                viewPager.setCurrentItem(3, false);
+                viewPager.setCurrentItem(2, false);
             }
         });
 
@@ -114,7 +114,7 @@ public class OnBoarding extends AppCompatActivity {
         public void onPageSelected(int position) {
             animationAppear = AnimationUtils.loadAnimation(OnBoarding.this,R.anim.fade_animation_appear);
             animationDisappear = AnimationUtils.loadAnimation(OnBoarding.this,R.anim.fade_animation_disappear);
-            if(position == 3){
+            if(position == 2){
                 btnDaftar.setAnimation(animationAppear);
                 textSudah.setAnimation(animationAppear);
                 textLoginDisini.setAnimation(animationAppear);

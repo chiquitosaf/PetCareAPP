@@ -1,8 +1,18 @@
 package com.chiquito.petcareapp.Model;
 
+import org.parceler.Parcel;
+import org.parceler.ParcelConstructor;
+
+@Parcel
 public class Paket {
     private String namaPaket;
-    private float hargaPaket;
+    private int hargaPaket;
+
+    @ParcelConstructor
+    public Paket(String namaPaket, int hargaPaket) {
+        this.namaPaket = namaPaket;
+        this.hargaPaket = hargaPaket;
+    }
 
     public String getNamaPaket() {
         return namaPaket;
@@ -12,11 +22,11 @@ public class Paket {
         this.namaPaket = namaPaket;
     }
 
-    public float getHargaPaket() {
+    public int getHargaPaket() {
         return hargaPaket;
     }
 
-    public void setHargaPaket(float hargaPaket) {
+    public void setHargaPaket(int hargaPaket) {
         this.hargaPaket = hargaPaket;
     }
 }

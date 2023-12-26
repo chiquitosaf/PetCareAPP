@@ -32,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="16dp"
-            android:text="Hi NAMA\nApa kabar hari ini?"
+            android:text="Hi \nApa kabar hari ini?"
             android:fontFamily="@font/cabin_bold"
             android:textColor="@color/black"
             android:textSize="25sp"

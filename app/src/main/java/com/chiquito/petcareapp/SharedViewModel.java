@@ -38,6 +38,14 @@ public class SharedViewModel extends ViewModel {
         }
     }
 
+    public void setEstimasi(String input){
+        Pesanan data = userInputData.getValue();
+        if(data!=null){
+            data.setEstimasi(input);
+            userInputData.setValue(data);
+        }
+    }
+
     public LiveData<Pesanan> getUserInputData() {
         return userInputData;
     }

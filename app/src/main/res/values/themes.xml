@@ -16,4 +16,8 @@
     <style name="App.Custom.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
         <item name="android:color">@color/semi_transparent_gray</item>
     </style>
+
+    <style name="Base.Widget.AppCompat.ProgressBar.White">
+        <item name="colorAccent">@color/white</item>
+    </style>
 </resources>

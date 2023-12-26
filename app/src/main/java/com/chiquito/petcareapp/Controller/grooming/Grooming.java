@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.chiquito.petcareapp.Model.Alamat;
+import com.chiquito.petcareapp.Model.JenisPesanan;
 import com.chiquito.petcareapp.Model.Pesanan;
 import com.chiquito.petcareapp.R;
 import com.chiquito.petcareapp.SharedViewModel;
@@ -129,6 +130,9 @@ public class Grooming extends AppCompatActivity{ //implements DatangFragment.OnD
             inputData = sharedViewModel.getUserInputData().getValue();
             if(tabLayout.getSelectedTabPosition() == 1){
                 inputData.setAlamat(null);
+                inputData.setJenisPesanan(JenisPesanan.DATANG);
+            }else {
+                inputData.setJenisPesanan(JenisPesanan.ANTAR_JEMPUT);
             }
             System.out.println("this is from grooming activity"+inputData.getTanggalBooking());
             bundle.putParcelable("pesanan", Parcels.wrap(inputData));

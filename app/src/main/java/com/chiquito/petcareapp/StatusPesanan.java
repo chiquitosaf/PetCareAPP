@@ -1,8 +1,7 @@
 package com.chiquito.petcareapp;
 
 public enum StatusPesanan {
-    MENUNGGU_KONFIRMASI,
+    DITERIMA,
     DIPROSES,
-    DIBATALKAN,
     SELESAI
 }

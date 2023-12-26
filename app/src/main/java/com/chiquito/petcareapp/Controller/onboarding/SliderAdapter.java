@@ -27,7 +27,6 @@ public class SliderAdapter extends PagerAdapter {
     int imagesArray[] = {
             R.drawable.image_onboarding_first,
             R.drawable.image_onboarding_second,
-            R.drawable.image_onboarding_third,
             R.drawable.image_onboarding_fourth
     };
 
@@ -35,7 +34,6 @@ public class SliderAdapter extends PagerAdapter {
     int headingsArray[] = {
         R.string.heading_onboarding_first,
         R.string.heading_onboarding_second,
-        R.string.heading_onboarding_third,
         R.string.heading_onboarding_fourth
     };
 
@@ -43,7 +41,6 @@ public class SliderAdapter extends PagerAdapter {
     int descriptionArray[] = {
         R.string.description_onboarding_first,
         R.string.description_onboarding_second,
-        R.string.description_onboarding_third,
         R.string.description_onboarding_fourth
     };
 

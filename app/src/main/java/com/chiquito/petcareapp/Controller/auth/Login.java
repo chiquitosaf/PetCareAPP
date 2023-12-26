@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.chiquito.petcareapp.Controller.Home;
@@ -20,6 +22,8 @@ public class Login extends AppCompatActivity {
 
     TextInputEditText email, password;
     FirebaseAuth auth;
+    ProgressBar progressBarLogin;
+    TextView txtDaftarDisini;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,15 +34,27 @@ public class Login extends AppCompatActivity {
 
         email = findViewById(R.id.email_login);
         password = findViewById(R.id.password_login);
+        progressBarLogin = findViewById(R.id.progress_bar_login);
+        txtDaftarDisini = findViewById(R.id.txt_daftar_disini);
 
         Button btnLogin =  findViewById(R.id.btn_login);
         ImageButton btnBack = findViewById(R.id.btn_back);
 
+        txtDaftarDisini.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Login.this, Register.class);
+                startActivity(intent);
+            }
+        });
+
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                btnLogin.setText("");
+                progressBarLogin.setVisibility(View.VISIBLE);
                 loginUser();
+
             }
         });
 
@@ -68,6 +84,7 @@ public class Login extends AppCompatActivity {
                         }else{
                             Toast.makeText(Login.this, "Email atau Password yang dimasukkan salah!", Toast.LENGTH_SHORT).show();
                         }
+                        progressBarLogin.setVisibility(View.GONE);
                     });
         }else{
             email.setError("Email tidak boleh kosong");

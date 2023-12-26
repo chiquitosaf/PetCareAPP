@@ -58,31 +58,12 @@
                         android:layout_marginStart="10dp"/>
 
                 </RelativeLayout>
-
-                <android.widget.Button
-                    android:id="@+id/btn_edit_profile"
-                    android:layout_width="280dp"
-                    android:layout_height="48dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="12dp"
-                    android:height="44dp"
-                    android:background="@drawable/rounded_bg_button_primary"
-                    android:elevation="6dp"
-                    android:fontFamily="@font/cabin_semibold_italic"
-                    android:text="Edit Profil"
-                    android:textAlignment="center"
-                    android:textAllCaps="false"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-                    android:layout_below="@+id/profile_name"
-                    android:layout_centerHorizontal="true"/>
                 
                 <RelativeLayout
                     android:id="@+id/data_profile"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/btn_edit_profile">
+                    android:layout_below="@id/profile_name">
 
                     <TextView
                         android:id="@+id/label_email_profile"
@@ -123,8 +104,8 @@
                 </RelativeLayout>
 
                 <android.widget.Button
-                    android:id="@+id/btn_alamat_profile"
-                    android:layout_width="150dp"
+                    android:id="@+id/btn_edit_profile"
+                    android:layout_width="280dp"
                     android:layout_height="48dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="20dp"
@@ -133,33 +114,37 @@
                     android:background="@drawable/rounded_bg_button_primary"
                     android:elevation="6dp"
                     android:fontFamily="@font/cabin_semibold_italic"
-                    android:text="Cek Alamatmu"
+                    android:text="Edit Profil"
                     android:textAlignment="center"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     android:layout_below="@+id/data_profile"
-                    android:layout_alignParentStart="true"/>
+                    android:layout_centerHorizontal="true"/>
+
+                <android.widget.Button
+                    android:id="@+id/btn_logout_profile"
+                    android:layout_width="280dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="12dp"
+                    android:height="44dp"
+                    android:background="@drawable/rounded_bg_button_merah"
+                    android:elevation="6dp"
+                    android:fontFamily="@font/cabin_semibold_italic"
+                    android:text="Logout"
+                    android:textAlignment="center"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:layout_below="@id/btn_edit_profile"
+                    android:layout_centerHorizontal="true"/>
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
 
-        <android.widget.Button
-            android:id="@+id/btn_logout_profile"
-            android:layout_width="280dp"
-            android:layout_height="48dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="12dp"
-            android:height="44dp"
-            android:background="#8B0000"
-            android:elevation="6dp"
-            android:fontFamily="@font/cabin_semibold_italic"
-            android:text="Logout"
-            android:textAlignment="center"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="20sp" />
-
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 
 </FrameLayout>

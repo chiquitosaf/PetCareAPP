@@ -17,6 +17,9 @@
         android:theme="@style/Theme.PetCareAPP"
         tools:targetApi="31">
         <activity
+            android:name=".Controller.paket.PaketActivity"
+            android:exported="false" />
+        <activity
             android:name=".Controller.grooming.Grooming3"
             android:exported="false" />
         <activity
@@ -24,9 +27,6 @@
             android:exported="false" />
         <activity
             android:name=".Controller.hewan.DetailHewan"
-            android:exported="false" />
-        <activity
-            android:name=".Controller.paket.ListPaket"
             android:exported="false" />
         <activity
             android:name=".Controller.HomeAdminFragment"

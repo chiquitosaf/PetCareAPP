@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.chiquito.petcareapp.R;
@@ -28,6 +29,7 @@ public class Register extends AppCompatActivity {
     private TextInputEditText nama, email, password, confirmPassword;
     private FirebaseAuth auth;
     private FirebaseDatabase database;
+    private ProgressBar progressBarRegister;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,13 +45,17 @@ public class Register extends AppCompatActivity {
         nama = findViewById(R.id.nama_register);
         email = findViewById(R.id.email_register);
         password = findViewById(R.id.password_register);
+        progressBarRegister = findViewById(R.id.progress_bar_register);
 
         // register button action when clicked
         btnDaftar.setOnClickListener(new View.OnClickListener() {
             //open login activity
             @Override
             public void onClick(View v) {
+                btnDaftar.setText("");
+                progressBarRegister.setVisibility(View.VISIBLE);
                 createUser();
+
             }
         });
 
@@ -113,6 +119,7 @@ public class Register extends AppCompatActivity {
                         } else {
                             Toast.makeText(Register.this, "Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
+                        progressBarRegister.setVisibility(View.GONE);
                     }
                 });
     }

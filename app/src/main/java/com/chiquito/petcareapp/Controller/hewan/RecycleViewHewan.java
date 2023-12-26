@@ -85,18 +85,29 @@ public class RecycleViewHewan extends AppCompatActivity implements SelectListene
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(RecycleViewHewan.this, "Opsss.... Something is wrong", Toast.LENGTH_SHORT).show();
+                Toast.makeText(RecycleViewHewan.this, "Opsss.... Something is wrong",
+                        Toast.LENGTH_SHORT).show();
             }
         });
     }
 
     @Override
     public void onItemClicked(Hewan hewan) {
-        Intent intent = new Intent(this, DetailHewan.class);
-        Bundle bundle = new Bundle();
+        if (getIntent().getBooleanExtra("isFromGrooming", false)){
+            Intent intent = new Intent();
+            Bundle bundle = new Bundle();
 
-        bundle.putParcelable("hewan", Parcels.wrap(hewan));
-        intent.putExtras(bundle);
-        startActivity(intent);
+            bundle.putParcelable("hewan", Parcels.wrap(hewan));
+            intent.putExtras(bundle);
+            setResult(RESULT_OK, intent);
+            finish();
+        } else {
+            Intent intent = new Intent(this, DetailHewan.class);
+            Bundle bundle = new Bundle();
+
+            bundle.putParcelable("hewan", Parcels.wrap(hewan));
+            intent.putExtras(bundle);
+            startActivity(intent);
+        }
     }
 }

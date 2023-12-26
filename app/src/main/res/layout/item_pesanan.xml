@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_tanggal_buat_pesanan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="00/00/000 00:00"
+        android:fontFamily="@font/cabin_semibold"
+        android:textSize="10sp"/>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="6dp"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/header_item_pesanan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_nama_paket_pesanan"
+                    android:text="Nama Paket"
+                    android:fontFamily="@font/cabin_bold"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_harga_pesanan"
+                    android:text="Rp 50.000"
+                    android:fontFamily="@font/cabin_semibold"
+                    android:textSize="11sp"
+                    android:textColor="@color/sec_text_color"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"/>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="?android:attr/listDivider"/>
+
+            <RelativeLayout
+                android:id="@+id/desc_item_pesanan"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <!-- Status pesanan -->
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/status_pesanan">
+
+                    <TextView
+                        android:id="@+id/tv_label_status_pesanan"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:text="Status"
+                        android:fontFamily="@font/cabin_semibold"
+                        android:textSize="12sp"
+                        android:textColor="@color/sec_text_color"
+                        android:layout_centerVertical="true"/>
+
+                    <TextView
+                        android:id="@+id/tv_status_pesanan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Stage Status"
+                        android:fontFamily="@font/cabin"
+                        android:textSize="12sp"
+                        android:textColor="@color/white"
+                        android:layout_toEndOf="@id/tv_label_status_pesanan"
+                        android:background="@drawable/rounded_bg_button_primary"
+                        android:padding="2dp"
+                        android:layout_marginStart="40dp"/>
+
+                </RelativeLayout>
+
+                <!-- Hewan -->
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/hewan_pesanan"
+                    android:layout_below="@id/status_pesanan">
+
+                    <TextView
+                        android:id="@+id/tv_label_hewan_pesanan"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:text="Hewan"
+                        android:fontFamily="@font/cabin_semibold"
+                        android:textSize="12sp"
+                        android:textColor="@color/sec_text_color"
+                        android:layout_centerVertical="true"/>
+
+                    <TextView
+                        android:id="@+id/tv_hewan_pesanan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nama Hewan"
+                        android:fontFamily="@font/cabin"
+                        android:textSize="12sp"
+                        android:textColor="@color/black"
+                        android:layout_toEndOf="@id/tv_label_hewan_pesanan"
+                        android:padding="2dp"
+                        android:layout_marginStart="40dp"/>
+
+                </RelativeLayout>
+
+                <!-- Tanggal Booking -->
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tanggal_booking_pesanan"
+                    android:layout_below="@id/hewan_pesanan">
+
+                    <TextView
+                        android:id="@+id/tv_label_tanggal_booking_pesanan"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:text="Tanggal Booking"
+                        android:fontFamily="@font/cabin_semibold"
+                        android:textSize="12sp"
+                        android:textColor="@color/sec_text_color"
+                        android:layout_centerVertical="true"/>
+
+                    <TextView
+                        android:id="@+id/tv_tanggal_booking_pesanan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="00/00/0000"
+                        android:fontFamily="@font/cabin"
+                        android:textSize="12sp"
+                        android:textColor="@color/black"
+                        android:layout_toEndOf="@id/tv_label_tanggal_booking_pesanan"
+                        android:padding="2dp"
+                        android:layout_marginStart="40dp"
+                        android:layout_centerVertical="true"/>
+
+                </RelativeLayout>
+
+                <!-- Waktu Booking -->
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/waktu_booking_pesanan"
+                    android:layout_below="@id/tanggal_booking_pesanan">
+
+                    <TextView
+                        android:id="@+id/tv_label_waktu_booking_pesanan"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:text="Waktu Booking"
+                        android:fontFamily="@font/cabin_semibold"
+                        android:textSize="12sp"
+                        android:textColor="@color/sec_text_color"
+                        android:layout_centerVertical="true"/>
+
+                    <TextView
+                        android:id="@+id/tv_waktu_booking_pesanan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="00:00"
+                        android:fontFamily="@font/cabin"
+                        android:textSize="12sp"
+                        android:textColor="@color/black"
+                        android:layout_toEndOf="@id/tv_label_waktu_booking_pesanan"
+                        android:padding="2dp"
+                        android:layout_marginStart="40dp"
+                        android:layout_centerVertical="true"/>
+
+                </RelativeLayout>
+
+                <!-- Estimasi Selesai Booking -->
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/estimasi_pesanan"
+                    android:layout_below="@id/waktu_booking_pesanan">
+
+                    <TextView
+                        android:id="@+id/tv_label_estimasi_pesanan"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:text="Estimasi Selesai"
+                        android:fontFamily="@font/cabin_semibold"
+                        android:textSize="12sp"
+                        android:textColor="@color/sec_text_color"
+                        android:layout_centerVertical="true"/>
+
+                    <TextView
+                        android:id="@+id/tv_estimasi_pesanan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="00:00"
+                        android:fontFamily="@font/cabin"
+                        android:textSize="12sp"
+                        android:textColor="@color/black"
+                        android:layout_toEndOf="@id/tv_label_estimasi_pesanan"
+                        android:padding="2dp"
+                        android:layout_marginStart="40dp"
+                        android:layout_centerVertical="true"/>
+
+                </RelativeLayout>
+
+                <!-- Keterangan Booking -->
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/keterangan_pesanan"
+                    android:layout_below="@id/estimasi_pesanan">
+
+                    <TextView
+                        android:id="@+id/tv_label_keterangan_pesanan"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:text="Keterangan"
+                        android:fontFamily="@font/cabin_semibold"
+                        android:textSize="12sp"
+                        android:textColor="@color/sec_text_color"
+                        android:layout_centerVertical="true"/>
+
+                    <TextView
+                        android:id="@+id/tv_keterangan_pesanan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+                        android:fontFamily="@font/cabin"
+                        android:textSize="12sp"
+                        android:textColor="@color/black"
+                        android:layout_toEndOf="@id/tv_label_keterangan_pesanan"
+                        android:padding="2dp"
+                        android:layout_marginStart="40dp"
+                        android:layout_centerVertical="true"/>
+
+                </RelativeLayout>
+
+                <!-- Jenis Pesanan Booking -->
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/jenis_pesanan"
+                    android:layout_below="@id/keterangan_pesanan">
+
+                    <TextView
+                        android:id="@+id/tv_label_jenis_pesanan"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:text="Jenis Pesanan"
+                        android:fontFamily="@font/cabin_semibold"
+                        android:textSize="12sp"
+                        android:textColor="@color/sec_text_color"
+                        android:layout_centerVertical="true"/>
+
+                    <TextView
+                        android:id="@+id/tv_jenis_pesanan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Jenis Pesanan"
+                        android:fontFamily="@font/cabin"
+                        android:textSize="12sp"
+                        android:textColor="@color/black"
+                        android:layout_toEndOf="@id/tv_label_jenis_pesanan"
+                        android:padding="2dp"
+                        android:layout_marginStart="40dp"
+                        android:layout_centerVertical="true"/>
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <!-- Alamat Booking -->
+            <RelativeLayout
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/alamat_pesanan">
+
+                <TextView
+                    android:id="@+id/tv_label_alamat_pesanan"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:text="Alamat Pesanan"
+                    android:fontFamily="@font/cabin_semibold"
+                    android:textSize="12sp"
+                    android:textColor="@color/sec_text_color"
+                    android:layout_centerVertical="true"/>
+
+                <TextView
+                    android:id="@+id/tv_alamat_pesanan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Alamat Lengkap"
+                    android:fontFamily="@font/cabin"
+                    android:textSize="12sp"
+                    android:textColor="@color/black"
+                    android:layout_toEndOf="@id/tv_label_alamat_pesanan"
+                    android:padding="2dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_centerVertical="true"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="1dp"/>
+
+</LinearLayout>

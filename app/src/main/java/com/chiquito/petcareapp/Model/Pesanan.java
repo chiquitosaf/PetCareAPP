@@ -7,14 +7,51 @@ import org.parceler.ParcelConstructor;
 
 @Parcel
 public class Pesanan {
-    String tanggalBooking, waktuBooking, kondisiHewan, tanggalBuat;
-    float harga;
+
+    String tanggalBooking, waktuBooking, kondisiHewan, tanggalBuat, estimasi;
+    int harga;
     Alamat alamat;
     Hewan hewan;
     StatusPesanan status;
+    Paket paket;
+    JenisPesanan jenisPesanan;
+
+
 
     @ParcelConstructor
     public Pesanan() {
+    }
+
+    public Pesanan(String tanggalBooking, String waktuBooking, String kondisiHewan, String tanggalBuat,
+                   String estimasi, int harga, Alamat alamat, Hewan hewan, StatusPesanan status,
+                   Paket paket, JenisPesanan jenisPesanan) {
+        this.tanggalBooking = tanggalBooking;
+        this.waktuBooking = waktuBooking;
+        this.kondisiHewan = kondisiHewan;
+        this.tanggalBuat = tanggalBuat;
+        this.estimasi = estimasi;
+        this.harga = harga;
+        this.alamat = alamat;
+        this.hewan = hewan;
+        this.status = status;
+        this.paket = paket;
+        this.jenisPesanan = jenisPesanan;
+    }
+
+    public String getEstimasi() {
+        return estimasi;
+    }
+
+    public void setEstimasi(String estimasi) {
+        this.estimasi = estimasi;
+    }
+
+    public JenisPesanan getJenisPesanan() {
+        return jenisPesanan;
+    }
+
+    public void setJenisPesanan(JenisPesanan jenisPesanan) {
+        this.jenisPesanan = jenisPesanan;
     }
 
     public String getTanggalBooking() {
@@ -49,11 +86,11 @@ public class Pesanan {
         this.tanggalBuat = tanggalBuat;
     }
 
-    public float getHarga() {
+    public int getHarga() {
         return harga;
     }
 
-    public void setHarga(float harga) {
+    public void setHarga(int harga) {
         this.harga = harga;
     }
 
@@ -79,5 +116,13 @@ public class Pesanan {
 
     public void setStatus(StatusPesanan status) {
         this.status = status;
+    }
+
+    public void setPaket(Paket paket) {
+        this.paket = paket;
+    }
+
+    public Paket getPaket() {
+        return paket;
     }
 }

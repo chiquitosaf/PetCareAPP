@@ -153,6 +153,8 @@ public class AntarJemputFragment extends Fragment {
                         }
                         waktuBookingString = String.format(Locale.getDefault(), "%02d:%02d", hour,
                                 minute);
+                        sharedViewModel.setEstimasi(String.format(Locale.getDefault(),
+                                "%02d:%02d", hour+3, minute));
                         txtInputWaktuGroomingAntarJemput.setText(waktuBookingString);
                     }
                 }, 12, 0, true);

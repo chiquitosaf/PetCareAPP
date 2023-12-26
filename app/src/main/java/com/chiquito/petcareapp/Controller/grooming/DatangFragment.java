@@ -125,6 +125,8 @@ public class DatangFragment extends Fragment {
                 }
                 waktuBookingString = String.format(Locale.getDefault(), "%02d:%02d", hour,
                         minute);
+                sharedViewModel.setEstimasi(String.format(Locale.getDefault(),
+                        "%02d:%02d", hour+3, minute));
                 txtInputWaktuGroomingDatang.setText(waktuBookingString);
             }
         }, 12, 0, true);
