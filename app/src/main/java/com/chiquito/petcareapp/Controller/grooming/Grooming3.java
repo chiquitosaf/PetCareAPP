@@ -107,25 +107,30 @@ public class Grooming3 extends AppCompatActivity {
                 db = new Database();
                 String userID = db.getUserID();
                 DatabaseReference userRef = db.getFirebaseDatabase().getReference("Customer").child(userID);
+                System.out.println("userref:" + userRef);
+                System.out.println("userid: "+userID);
                 userRef.get().addOnSuccessListener(new OnSuccessListener<DataSnapshot>() {
                     @Override
                     public void onSuccess(DataSnapshot dataSnapshot) {
-                        String nama = dataSnapshot.child("nama").getValue(String.class);
+                        System.out.println("nama pemesan "+dataSnapshot.child("name").getValue(String.class));
+                        String nama = dataSnapshot.child("name").getValue(String.class);
                         String noWa = dataSnapshot.child("noWa").getValue(String.class);
                         String email = dataSnapshot.child("email").getValue(String.class);
                         String password = dataSnapshot.child("password").getValue(String.class);
 
                         Customer pemesan = new Customer(nama, email, password, noWa, userID);
                         pesanan.setCustomer(pemesan);
+
+                        db.setRef(db.getFirebaseDatabase().getReference("Pesanan").child(db.getUserID())
+                                .child("Diterima"));
+                        db.getRef().push().setValue(pesanan);
+                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        startActivity(intent);
+                        finish();
                     }
                 });
 
-                db.setRef(db.getFirebaseDatabase().getReference("Pesanan").child(db.getUserID())
-                        .child("Diterima"));
-                db.getRef().push().setValue(pesanan);
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
-                finish();
+
             }
         });
     }

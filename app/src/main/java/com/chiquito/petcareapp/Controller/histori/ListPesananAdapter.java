@@ -74,25 +74,9 @@ public class ListPesananAdapter extends RecyclerView.Adapter<ListPesananAdapter.
 //        notifyDataSetChanged();
 //    }
 
-    public void showKey(){
-        for (String key : this.keys) {
-            System.out.println("key :" + key);
-        }
-    }
-
-    public void isKeyEmpty(){
-        if(this.dataMap.isEmpty()){
-            System.out.println("Key is empty");
-        } else {
-            System.out.println("Key is not empty");
-        }
-    }
-
     public void setOrdersHash(HashMap<String, Pesanan> orders) {
-
         this.dataMap = orders;
         this.keys = new ArrayList<>(dataMap.keySet()); // Store keys from HashMap in ArrayList
-
         notifyDataSetChanged();
     }
 

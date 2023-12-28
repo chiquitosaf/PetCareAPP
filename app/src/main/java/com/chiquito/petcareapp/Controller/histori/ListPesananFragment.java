@@ -79,20 +79,14 @@ public class ListPesananFragment extends Fragment {
 
         db = new Database();
 
-//        recyclerView = view.findViewById(R.id.recycle_view_histori);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView = view.findViewById(R.id.recycle_view_histori);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        listPesananAdapter = new ListPesananAdapter();
+        recyclerView.setAdapter(listPesananAdapter);
+
         int status = getArguments().getInt("status");
-        getOrdersBasdOnStatusHash(status);
-
-//        listPesananAdapter = new ListPesananAdapter(requireContext(), dataMap);
-//
-//        recyclerView.setAdapter(listPesananAdapter);
-
-
-
-
-//        int status = getArguments().getInt("status");
-//        loadOrdersHash(status);
+        loadOrdersHash(status);
 
         return view;
     }
@@ -103,18 +97,13 @@ public class ListPesananFragment extends Fragment {
 //        listPesananAdapter.setOrders(orders);
 //    }
 
-    private void loadOrdersHash(HashMap<String, Pesanan> orders) {
-        if(orders.isEmpty()){
-            System.out.println("Order is empty");
-        } else {
-            System.out.println("Order is not empty");
-        }
+    private void loadOrdersHash(int status) {
+        HashMap<String, Pesanan> orders = getOrdersBasedOnStatusHash(status);
 
         listPesananAdapter.setOrdersHash(orders);
-        listPesananAdapter.showKey();
     }
 
-    private void getOrdersBasdOnStatusHash(int status) {
+    private HashMap<String, Pesanan> getOrdersBasedOnStatusHash(int status) {
         HashMap<String, Pesanan> orders = new HashMap<>();
 
         db.setRef(db.getFirebaseDatabase().getReference());
@@ -129,11 +118,10 @@ public class ListPesananFragment extends Fragment {
 //                        callback.onUserTypeCallback(false);
                         db.setRef(db.getFirebaseDatabase().getReference().child("Pesanan"));
 
-
                         valueEventListener = db.getRef().addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                                orders.clear();
+                                orders.clear();
                                 for (DataSnapshot userSnapshot : snapshot.getChildren()){
                                     String userID = userSnapshot.getKey();
                                     DatabaseReference diterimaRef = db.getRef().child(userID).child("Diterima");
@@ -143,8 +131,8 @@ public class ListPesananFragment extends Fragment {
 
                                             for (DataSnapshot item : snapshot.getChildren()) {
                                                 Pesanan pesanan = getItem(item);
-
                                                 orders.put(String.valueOf(item.getKey()), pesanan);
+                                                System.out.println("this is the order " + orders.get(item.getKey()).getCustomer().getName());
                                             }
                                         }
                                         @Override
@@ -184,7 +172,7 @@ public class ListPesananFragment extends Fragment {
                                     valueEventListener = db.getRef().addValueEventListener(new ValueEventListener() {
                                         @Override
                                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                                            orders.clear();
+                                            orders.clear();
                                             System.out.println(snapshot.getRef());
                                             for (DataSnapshot item : snapshot.getChildren()) {
 
@@ -192,7 +180,6 @@ public class ListPesananFragment extends Fragment {
 
                                                 orders.put(String.valueOf(item.getKey()), pesanan);
                                             }
-                                            loadOrdersHash(orders);
                                             listPesananAdapter.notifyDataSetChanged();
                                         }
 
@@ -221,7 +208,7 @@ public class ListPesananFragment extends Fragment {
             });
         }
 
-
+        return orders;
     }
 
 
