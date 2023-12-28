@@ -9,6 +9,7 @@ import org.parceler.ParcelConstructor;
 public class Pesanan {
 
     String tanggalBooking, waktuBooking, kondisiHewan, tanggalBuat, estimasi;
+    Customer customer;
     int harga;
     Alamat alamat;
     Hewan hewan;
@@ -24,7 +25,7 @@ public class Pesanan {
 
     public Pesanan(String tanggalBooking, String waktuBooking, String kondisiHewan, String tanggalBuat,
                    String estimasi, int harga, Alamat alamat, Hewan hewan, StatusPesanan status,
-                   Paket paket, JenisPesanan jenisPesanan) {
+                   Paket paket, JenisPesanan jenisPesanan, Customer customer) {
         this.tanggalBooking = tanggalBooking;
         this.waktuBooking = waktuBooking;
         this.kondisiHewan = kondisiHewan;
@@ -36,6 +37,15 @@ public class Pesanan {
         this.status = status;
         this.paket = paket;
         this.jenisPesanan = jenisPesanan;
+        this.customer = customer;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     public String getEstimasi() {

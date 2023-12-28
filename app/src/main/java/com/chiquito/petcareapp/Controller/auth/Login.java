@@ -24,6 +24,7 @@ public class Login extends AppCompatActivity {
     FirebaseAuth auth;
     ProgressBar progressBarLogin;
     TextView txtDaftarDisini;
+    Button btnLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +38,7 @@ public class Login extends AppCompatActivity {
         progressBarLogin = findViewById(R.id.progress_bar_login);
         txtDaftarDisini = findViewById(R.id.txt_daftar_disini);
 
-        Button btnLogin =  findViewById(R.id.btn_login);
+        btnLogin =  findViewById(R.id.btn_login);
         ImageButton btnBack = findViewById(R.id.btn_back);
 
         txtDaftarDisini.setOnClickListener(new View.OnClickListener() {
@@ -54,6 +55,7 @@ public class Login extends AppCompatActivity {
                 btnLogin.setText("");
                 progressBarLogin.setVisibility(View.VISIBLE);
                 loginUser();
+
 
             }
         });
@@ -85,6 +87,7 @@ public class Login extends AppCompatActivity {
                             Toast.makeText(Login.this, "Email atau Password yang dimasukkan salah!", Toast.LENGTH_SHORT).show();
                         }
                         progressBarLogin.setVisibility(View.GONE);
+                        btnLogin.setText("Log in");
                     });
         }else{
             email.setError("Email tidak boleh kosong");

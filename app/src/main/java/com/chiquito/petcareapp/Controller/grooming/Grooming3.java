@@ -1,5 +1,6 @@
 package com.chiquito.petcareapp.Controller.grooming;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -12,9 +13,15 @@ import android.widget.TextView;
 
 import com.chiquito.petcareapp.Controller.MainActivity;
 import com.chiquito.petcareapp.Database;
+import com.chiquito.petcareapp.Model.Customer;
 import com.chiquito.petcareapp.Model.Pesanan;
 import com.chiquito.petcareapp.R;
 import com.chiquito.petcareapp.StatusPesanan;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 
 import org.parceler.Parcels;
 
@@ -98,12 +105,32 @@ public class Grooming3 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 db = new Database();
-                db.setRef(db.getFirebaseDatabase().getReference("Pesanan").child(db.getUserID())
-                        .child("Diterima"));
-                db.getRef().push().setValue(pesanan);
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
-                finish();
+                String userID = db.getUserID();
+                DatabaseReference userRef = db.getFirebaseDatabase().getReference("Customer").child(userID);
+                System.out.println("userref:" + userRef);
+                System.out.println("userid: "+userID);
+                userRef.get().addOnSuccessListener(new OnSuccessListener<DataSnapshot>() {
+                    @Override
+                    public void onSuccess(DataSnapshot dataSnapshot) {
+                        System.out.println("nama pemesan "+dataSnapshot.child("name").getValue(String.class));
+                        String nama = dataSnapshot.child("name").getValue(String.class);
+                        String noWa = dataSnapshot.child("noWA").getValue(String.class);
+                        String email = dataSnapshot.child("email").getValue(String.class);
+                        String password = dataSnapshot.child("password").getValue(String.class);
+
+                        Customer pemesan = new Customer(nama, email, password, noWa, userID);
+                        pesanan.setCustomer(pemesan);
+
+                        db.setRef(db.getFirebaseDatabase().getReference("Pesanan").child(db.getUserID())
+                                .child("Diterima"));
+                        db.getRef().child(pesanan.getCustomer().getName()+pesanan.getTanggalBuat()).setValue(pesanan);
+                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
+
+
             }
         });
     }
