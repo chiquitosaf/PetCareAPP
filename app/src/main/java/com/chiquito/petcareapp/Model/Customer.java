@@ -1,12 +1,19 @@
 package com.chiquito.petcareapp.Model;
 
-public class Customer {
-    String name, email, password;
+import org.parceler.Parcel;
+import org.parceler.ParcelConstructor;
 
-    public Customer(String name, String email, String password) {
+@Parcel
+public class Customer {
+    String name, email, password, noWA, imageUrl, uid;
+
+    @ParcelConstructor
+    public Customer(String name, String email, String password, String noWA, String uid) {
         this.name = name;
         this.email = email;
         this.password = password;
+        this.noWA = noWA;
+        this.uid = uid;
     }
 
     public String getName() {
@@ -31,5 +38,29 @@ public class Customer {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getNoWA() {
+        return noWA;
+    }
+
+    public void setNoWA(String noWA) {
+        this.noWA = noWA;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 }

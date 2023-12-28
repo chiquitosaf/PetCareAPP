@@ -12,6 +12,7 @@ import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.chiquito.petcareapp.Database;
 import com.chiquito.petcareapp.R;
 import com.chiquito.petcareapp.Model.Customer;
 import com.chiquito.petcareapp.Controller.onboarding.OnBoarding;
@@ -26,9 +27,8 @@ public class Register extends AppCompatActivity {
 
     private Button btnDaftar;
     private ImageButton btnBack;
-    private TextInputEditText nama, email, password, confirmPassword;
-    private FirebaseAuth auth;
-    private FirebaseDatabase database;
+    private TextInputEditText nama, email, password, noWA;
+    private Database db;
     private ProgressBar progressBarRegister;
 
     @Override
@@ -36,9 +36,9 @@ public class Register extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        // initialize firebase auth
-        auth = FirebaseAuth.getInstance();
-        database = FirebaseDatabase.getInstance("https://petcareapp-85cfe-default-rtdb.asia-southeast1.firebasedatabase.app");
+        // initialize database
+        db = new Database(null);
+        db.setfAuth(FirebaseAuth.getInstance());
 
         btnDaftar = findViewById(R.id.btn_daftar);
         btnBack = findViewById(R.id.btn_back);
@@ -46,6 +46,7 @@ public class Register extends AppCompatActivity {
         email = findViewById(R.id.email_register);
         password = findViewById(R.id.password_register);
         progressBarRegister = findViewById(R.id.progress_bar_register);
+        noWA = findViewById(R.id.no_wa_register);
 
         // register button action when clicked
         btnDaftar.setOnClickListener(new View.OnClickListener() {
@@ -75,6 +76,7 @@ public class Register extends AppCompatActivity {
         String userNama = nama.getText().toString();
         String userEmail = email.getText().toString();
         String userPassword = password.getText().toString();
+        String userWA = noWA.getText().toString();
 
         if (TextUtils.isEmpty(userNama)) {
             nama.requestFocus();
@@ -102,24 +104,32 @@ public class Register extends AppCompatActivity {
             return;
         }
 
+        if (TextUtils.isEmpty(userWA)){
+            password.requestFocus();
+            password.setError("Nomor WhatsApp tidak boleh kosong");
+            return;
+        }
+
         //Create User
-        auth.createUserWithEmailAndPassword(userEmail, userPassword)
+        db.getfAuth().createUserWithEmailAndPassword(userEmail, userPassword)
                 .addOnCompleteListener(Register.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         //Check if success
                         if (task.isSuccessful()) {
                             //Save user to database
-                            Customer customer = new Customer(userNama, userEmail, userPassword);
                             String id = task.getResult().getUser().getUid();
-                            database.getReference().child("Customer").child(id).setValue(customer);
+                            Customer customer = new Customer(userNama, userEmail, userPassword, userWA, id);
+                            db.getFirebaseDatabase().getReference().child("Customer").child(id).setValue(customer);
                             Toast.makeText(Register.this, "Registrasi Berhasil", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(Register.this, Login.class));
                             finish();
                         } else {
-                            Toast.makeText(Register.this, "Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Register.this, "Error: " + task.getException().getMessage(),
+                                    Toast.LENGTH_SHORT).show();
                         }
                         progressBarRegister.setVisibility(View.GONE);
+                        btnDaftar.setText("Daftar");
                     }
                 });
     }

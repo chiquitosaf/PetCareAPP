@@ -15,8 +15,6 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:id="@+id/tabLayout_histori"
-            android:layout_marginEnd="13dp"
-            android:layout_marginStart="13dp"
             app:tabMode="fixed"
             app:tabGravity="fill"
             app:tabIndicatorGravity="stretch"
@@ -25,7 +23,7 @@
             app:tabIndicator="@drawable/tab_indicator_grooming"
             app:tabIndicatorColor="@color/white"
             app:tabTextColor="@color/white"
-            android:background="@drawable/tab_layout_bg"
+            android:background="@color/colorPrimary"
             app:tabIndicatorFullWidth="true"
             app:tabIndicatorHeight="2dp"
             app:tabTextAppearance="@style/TabLayoutStyle" />

@@ -54,7 +54,6 @@ public class HomeAdminFragment extends Fragment {
                 String labelBanner = "Hi "+ namaUser +"\nApa kabar hari ini?";
                 textViewBanner.setText(labelBanner);
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Log.e("Error: ", error.getMessage());

@@ -24,131 +24,160 @@
             android:background="@android:color/transparent"/>
     </RelativeLayout>
 
-    <!-- content -->
-    <RelativeLayout
+
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/toolbar_registrasi"
-        android:paddingBottom="16dp"
-        android:paddingEnd="16dp"
-        android:paddingStart="16dp">
+        android:layout_below="@id/toolbar_registrasi">
 
-        <!-- heading text 1 -->
-        <TextView
-            android:id="@+id/heading_registrasi"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/txt_heading_registrasi"
-            android:textSize="25sp"
-            android:fontFamily="@font/cabin_bold"
-            android:textColor="@color/black"/>
-
-        <!-- heading text 2 -->
-        <TextView
-            android:id="@+id/heading2_registrasi"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/txt_heading2_registrasi"
-            android:textSize="15sp"
-            android:fontFamily="@font/cabin_semibold"
-            android:layout_below="@id/heading_registrasi"
-            android:textColor="@color/black"/>
-
-        <!-- input nama -->
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/input_nama_register"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        <!-- content -->
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_below="@id/heading2_registrasi"
-            app:boxStrokeColor="@color/light_gray">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/nama_register"
+            android:paddingBottom="16dp"
+            android:paddingEnd="16dp"
+            android:paddingStart="16dp">
+
+            <!-- heading text 1 -->
+            <TextView
+                android:id="@+id/heading_registrasi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_heading_registrasi"
+                android:textSize="25sp"
+                android:fontFamily="@font/cabin_bold"
+                android:textColor="@color/black"/>
+
+            <!-- heading text 2 -->
+            <TextView
+                android:id="@+id/heading2_registrasi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_heading2_registrasi"
+                android:textSize="15sp"
+                android:fontFamily="@font/cabin_semibold"
+                android:layout_below="@id/heading_registrasi"
+                android:textColor="@color/black"/>
+
+            <!-- input nama -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_nama_register"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Nama"
-                android:inputType="textPersonName"
-                android:textColorHint="@color/dark_grey"/>
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/heading2_registrasi"
+                app:boxStrokeColor="@color/light_gray">
 
-        <!-- input email -->
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/input_email_register"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_below="@id/input_nama_register"
-            app:boxStrokeColor="@color/light_gray">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/nama_register"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Nama"
+                    android:inputType="textPersonName"
+                    android:textColorHint="@color/dark_grey"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/email_register"
+            <!-- input email -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_email_register"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/e_mail"
-                android:inputType="textEmailAddress"
-                android:textColorHint="@color/black"/>
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/input_nama_register"
+                app:boxStrokeColor="@color/light_gray">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/email_register"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/e_mail"
+                    android:inputType="textEmailAddress"
+                    android:textColorHint="@color/black"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
 
-        <!-- input password -->
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/input_password_register"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_below="@id/input_email_register"
-            app:boxStrokeColor="@color/light_gray">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/password_register"
+            <!-- input password -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_password_register"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/password"
-                android:inputType="textPassword"
-                android:textColorHint="@color/dark_grey"/>
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/input_email_register"
+                app:boxStrokeColor="@color/light_gray">
 
-        <ProgressBar
-            android:id="@+id/progress_bar_register"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/input_password_register"
-            android:layout_centerHorizontal="true"
-            android:translationZ="90dp"
-            android:layout_marginTop="35dp"
-            android:theme="@style/Base.Widget.AppCompat.ProgressBar.White"
-            android:visibility="gone"/>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/password_register"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/password"
+                    android:inputType="textPassword"
+                    android:textColorHint="@color/dark_grey"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- register button -->
-        <android.widget.Button
-            android:id="@+id/btn_daftar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="35dp"
-            android:layout_marginBottom="12dp"
-            android:height="44dp"
-            android:background="@drawable/rounded_bg_button_primary"
-            android:elevation="6dp"
-            android:fontFamily="@font/cabin_semibold_italic"
-            android:text="Daftar"
-            android:textAlignment="center"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:layout_below="@id/input_password_register"/>
+            <!-- input nomor wa -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_wa_register"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_below="@+id/input_password_register"
+                app:boxStrokeColor="@color/light_gray">
 
-        <!-- cute catto image -->
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/btn_daftar"
-            android:layout_centerInParent="true"
-            android:layout_marginTop="80dp"
-            android:src="@drawable/cat_stretching" />
-    </RelativeLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/no_wa_register"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Masukkan Nomor WhatsApp"
+                    android:inputType="phone"
+                    android:textColorHint="@color/dark_grey"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <ProgressBar
+                android:id="@+id/progress_bar_register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/input_wa_register"
+                android:layout_centerHorizontal="true"
+                android:translationZ="90dp"
+                android:layout_marginTop="35dp"
+                android:theme="@style/Base.Widget.AppCompat.ProgressBar.White"
+                android:visibility="gone"/>
+
+            <!-- register button -->
+            <android.widget.Button
+                android:id="@+id/btn_daftar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="35dp"
+                android:layout_marginBottom="12dp"
+                android:height="44dp"
+                android:background="@drawable/rounded_bg_button_primary"
+                android:elevation="6dp"
+                android:fontFamily="@font/cabin_semibold_italic"
+                android:text="Daftar"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:layout_below="@+id/input_wa_register"/>
+
+            <!-- cute catto image -->
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btn_daftar"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="80dp"
+                android:src="@drawable/cat_stretching" />
+        </RelativeLayout>
+
+    </ScrollView>
+
 </RelativeLayout>

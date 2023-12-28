@@ -41,7 +41,6 @@ public class HistoriFragment extends Fragment {
 //    private TabLayout tabLayout;
 //    private ViewPager2 viewPager;
 //    private GroomingFragmentAdapter groomingFragmentAdapter;
-//
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -52,13 +51,17 @@ public class HistoriFragment extends Fragment {
         viewPager = view.findViewById(R.id.viewPager_histori);
 
         HistoriFragmentAdapter historiFragmentAdapter = new HistoriFragmentAdapter(requireActivity());
-        historiFragmentAdapter.addFragment(ListPesananFragment.newInstance(ListPesananFragment.DITERIMA), "Diterima");
-        historiFragmentAdapter.addFragment(ListPesananFragment.newInstance(ListPesananFragment.DIPROSES), "Diproses");
-        historiFragmentAdapter.addFragment(ListPesananFragment.newInstance(ListPesananFragment.SELESAI), "Selesai");
+        historiFragmentAdapter.addFragment(ListPesananFragment.newInstance(ListPesananFragment.DITERIMA),
+                "Diterima");
+        historiFragmentAdapter.addFragment(ListPesananFragment.newInstance(ListPesananFragment.DIPROSES),
+                "Diproses");
+        historiFragmentAdapter.addFragment(ListPesananFragment.newInstance(ListPesananFragment.SELESAI),
+                "Selesai");
 
         viewPager.setAdapter(historiFragmentAdapter);
 
-        new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> tab.setText(historiFragmentAdapter.getPageTitle(position))).attach();
+        new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> tab.setText(historiFragmentAdapter.
+                getPageTitle(position))).attach();
 
         return view;
     }
