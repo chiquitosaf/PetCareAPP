@@ -30,9 +30,9 @@ import java.util.Locale;
 
 public class ListPesananAdapter extends RecyclerView.Adapter<ListPesananAdapter.PesananViewHolder>{
 
-//    private List<Pesanan> orders = new ArrayList<>();
-    private ArrayList<String> keys; // ArrayList to hold keys from HashMap
-    private HashMap<String, Pesanan> dataMap;
+    private List<Pesanan> orders = new ArrayList<>();
+//    private ArrayList<String> keys; // ArrayList to hold keys from HashMap
+//    private HashMap<String, Pesanan> dataMap;
     private Context context;
 
     public ListPesananAdapter() {
@@ -69,16 +69,16 @@ public class ListPesananAdapter extends RecyclerView.Adapter<ListPesananAdapter.
         }
     }
 
-//    public void setOrders(List<Pesanan> orders) {
-//        this.orders = orders;
-//        notifyDataSetChanged();
-//    }
-
-    public void setOrdersHash(HashMap<String, Pesanan> orders) {
-        this.dataMap = orders;
-        this.keys = new ArrayList<>(dataMap.keySet()); // Store keys from HashMap in ArrayList
+    public void setOrders(List<Pesanan> orders) {
+        this.orders = orders;
         notifyDataSetChanged();
     }
+
+//    public void setOrdersHash(HashMap<String, Pesanan> orders) {
+//        this.dataMap = orders;
+//        this.keys = new ArrayList<>(dataMap.keySet()); // Store keys from HashMap in ArrayList
+//        notifyDataSetChanged();
+//    }
 
     @Override
     public ListPesananAdapter.PesananViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -88,10 +88,10 @@ public class ListPesananAdapter extends RecyclerView.Adapter<ListPesananAdapter.
 
     @Override
     public void onBindViewHolder(ListPesananAdapter.PesananViewHolder holder, int position) {
-//        Pesanan pesanan = orders.get(position);
-        String key = keys.get(position);
-        System.out.println("Key: " + key);
-        Pesanan pesanan = dataMap.get(key);
+        Pesanan pesanan = orders.get(position);
+//        String key = keys.get(position);
+//        System.out.println("Key: " + key);
+//        Pesanan pesanan = dataMap.get(key);
 
         holder.tvStatusPesanan.setText(pesanan.getStatus().toString());
 
@@ -171,11 +171,30 @@ public class ListPesananAdapter extends RecyclerView.Adapter<ListPesananAdapter.
             public void onClick(View v) {
                 if(pesanan.getStatus() == StatusPesanan.DITERIMA){
                     pesanan.setStatus(StatusPesanan.DIPROSES);
-                    db.getRef().child("Pesanan").child(key).child("status").setValue(StatusPesanan.DIPROSES);
+                    db.getRef().child("Pesanan").child(pesanan.getCustomer().getUid()).child("Diterima").
+                            child(pesanan.getCustomer().getName()+pesanan.getTanggalBuat())
+                            .child("status").setValue(StatusPesanan.DIPROSES);
+
+                    db.getRef().child("Pesanan").child(pesanan.getCustomer().getUid()).child("Proses").
+                            child(pesanan.getCustomer().getName()+pesanan.getTanggalBuat()).setValue(pesanan);
+
+                    db.getRef().child("Pesanan").child(pesanan.getCustomer().getUid()).child("Diterima").
+                            child(pesanan.getCustomer().getName()+pesanan.getTanggalBuat()).removeValue();
+
                     Toast.makeText(v.getContext(), "Pesanan telah diterima", Toast.LENGTH_SHORT).show();
                 } else if(pesanan.getStatus() == StatusPesanan.DIPROSES){
                     pesanan.setStatus(StatusPesanan.SELESAI);
-                    db.getRef().child("Pesanan").child(key).child("status").setValue(StatusPesanan.SELESAI);
+                    db.getRef().child("Pesanan").child(pesanan.getCustomer().getUid()).child("Proses").
+                            child(pesanan.getCustomer().getName()+pesanan.getTanggalBuat())
+                            .child("status").setValue(StatusPesanan.DIPROSES);
+
+                    db.getRef().child("Pesanan").child(pesanan.getCustomer().getUid()).child("Selesai").
+                            child(pesanan.getCustomer().getName()+pesanan.getTanggalBuat()).setValue(pesanan);
+
+                    db.getRef().child("Pesanan").child(pesanan.getCustomer().getUid()).child("Proses").
+                            child(pesanan.getCustomer().getName()+pesanan.getTanggalBuat())
+                            .removeValue();
+
                     Toast.makeText(v.getContext(), "Pesanan telah selesai", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -184,6 +203,6 @@ public class ListPesananAdapter extends RecyclerView.Adapter<ListPesananAdapter.
 
     @Override
     public int getItemCount() {
-        return keys.size();
+        return orders.size();
     }
 }

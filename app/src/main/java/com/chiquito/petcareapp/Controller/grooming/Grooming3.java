@@ -114,7 +114,7 @@ public class Grooming3 extends AppCompatActivity {
                     public void onSuccess(DataSnapshot dataSnapshot) {
                         System.out.println("nama pemesan "+dataSnapshot.child("name").getValue(String.class));
                         String nama = dataSnapshot.child("name").getValue(String.class);
-                        String noWa = dataSnapshot.child("noWa").getValue(String.class);
+                        String noWa = dataSnapshot.child("noWA").getValue(String.class);
                         String email = dataSnapshot.child("email").getValue(String.class);
                         String password = dataSnapshot.child("password").getValue(String.class);
 
@@ -123,7 +123,7 @@ public class Grooming3 extends AppCompatActivity {
 
                         db.setRef(db.getFirebaseDatabase().getReference("Pesanan").child(db.getUserID())
                                 .child("Diterima"));
-                        db.getRef().push().setValue(pesanan);
+                        db.getRef().child(pesanan.getCustomer().getName()+pesanan.getTanggalBuat()).setValue(pesanan);
                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(intent);
                         finish();
