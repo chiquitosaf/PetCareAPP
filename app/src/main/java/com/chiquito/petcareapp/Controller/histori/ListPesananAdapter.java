@@ -171,28 +171,30 @@ public class ListPesananAdapter extends RecyclerView.Adapter<ListPesananAdapter.
             public void onClick(View v) {
                 if(pesanan.getStatus() == StatusPesanan.DITERIMA){
                     pesanan.setStatus(StatusPesanan.DIPROSES);
-                    db.getRef().child("Pesanan").child(pesanan.getCustomer().getUid()).child("Diterima").
-                            child(pesanan.getCustomer().getName()+pesanan.getTanggalBuat())
+                    db.getRef().child("Pesanan").child("Diterima")
+                            .child(pesanan.getCustomer().getName()+pesanan.getTanggalBuat())
                             .child("status").setValue(StatusPesanan.DIPROSES);
 
-                    db.getRef().child("Pesanan").child(pesanan.getCustomer().getUid()).child("Proses").
-                            child(pesanan.getCustomer().getName()+pesanan.getTanggalBuat()).setValue(pesanan);
+                    db.getRef().child("Pesanan").child("Proses")
+                            .child(pesanan.getCustomer().getName()+pesanan.getTanggalBuat())
+                            .setValue(pesanan);
 
-                    db.getRef().child("Pesanan").child(pesanan.getCustomer().getUid()).child("Diterima").
-                            child(pesanan.getCustomer().getName()+pesanan.getTanggalBuat()).removeValue();
+                    db.getRef().child("Pesanan").child("Diterima")
+                            .child(pesanan.getCustomer().getName()+pesanan.getTanggalBuat())
+                            .removeValue();
 
                     Toast.makeText(v.getContext(), "Pesanan telah diterima", Toast.LENGTH_SHORT).show();
                 } else if(pesanan.getStatus() == StatusPesanan.DIPROSES){
                     pesanan.setStatus(StatusPesanan.SELESAI);
-                    db.getRef().child("Pesanan").child(pesanan.getCustomer().getUid()).child("Proses").
-                            child(pesanan.getCustomer().getName()+pesanan.getTanggalBuat())
-                            .child("status").setValue(StatusPesanan.DIPROSES);
+                    db.getRef().child("Pesanan").child("Proses")
+                            .child(pesanan.getCustomer().getName()+pesanan.getTanggalBuat())
+                            .child("status").setValue(StatusPesanan.SELESAI);
 
-                    db.getRef().child("Pesanan").child(pesanan.getCustomer().getUid()).child("Selesai").
-                            child(pesanan.getCustomer().getName()+pesanan.getTanggalBuat()).setValue(pesanan);
+                    db.getRef().child("Pesanan").child("Selesai")
+                            .child(pesanan.getCustomer().getName()+pesanan.getTanggalBuat()).setValue(pesanan);
 
-                    db.getRef().child("Pesanan").child(pesanan.getCustomer().getUid()).child("Proses").
-                            child(pesanan.getCustomer().getName()+pesanan.getTanggalBuat())
+                    db.getRef().child("Pesanan").child("Proses")
+                            .child(pesanan.getCustomer().getName()+pesanan.getTanggalBuat())
                             .removeValue();
 
                     Toast.makeText(v.getContext(), "Pesanan telah selesai", Toast.LENGTH_SHORT).show();

@@ -121,8 +121,7 @@ public class Grooming3 extends AppCompatActivity {
                         Customer pemesan = new Customer(nama, email, password, noWa, userID);
                         pesanan.setCustomer(pemesan);
 
-                        db.setRef(db.getFirebaseDatabase().getReference("Pesanan").child(db.getUserID())
-                                .child("Diterima"));
+                        db.setRef(db.getFirebaseDatabase().getReference("Pesanan").child("Diterima"));
                         db.getRef().child(pesanan.getCustomer().getName()+pesanan.getTanggalBuat()).setValue(pesanan);
                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(intent);
