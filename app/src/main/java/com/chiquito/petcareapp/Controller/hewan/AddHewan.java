@@ -73,7 +73,7 @@ public class AddHewan extends AppCompatActivity {
     String tanggalLahirString;
     Database db;
     DatabaseReference databaseReference;
-    StorageReference storageReference;
+    public StorageReference storageReference;
     String namaAwal;
     TextView txtTitle;
 //    ActivityResultLauncher<PickVisualMediaRequest> pickImage;

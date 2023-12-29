@@ -232,43 +232,23 @@ public class ListPesananFragment extends Fragment {
 //                        callback.onUserTypeCallback(false);
                         db.setRef(db.getFirebaseDatabase().getReference().child("Pesanan"));
 
+                        if (status == 0){
+                            db.setRef(db.getRef().child("Diterima"));
+                        } else if(status == 1){
+                            db.setRef(db.getRef().child("Proses"));
+                        } else if(status == 2){
+                            db.setRef(db.getRef().child("Selesai"));
+                        }
 
-                        valueEventListener = db.getRef().addValueEventListener(new ValueEventListener() {
+                        db.getRef().addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                orders.clear();
-                                for (DataSnapshot userSnapshot : snapshot.getChildren()){
-                                    String userID = userSnapshot.getKey();
-                                    System.out.println("this is the userID " + userID);
 
-                                    db.setRef(db.getRef().child(userID));
+                                for (DataSnapshot item : snapshot.getChildren()) {
+                                    System.out.println("this is the ref " + item.getRef());
+                                    Pesanan pesanan = getItem(item);
 
-                                    if (status == 0){
-                                        db.setRef(db.getRef().child("Diterima"));
-                                    } else if(status == 1){
-                                        db.setRef(db.getRef().child("Proses"));
-                                    } else if(status == 2){
-                                        db.setRef(db.getRef().child("Selesai"));
-                                    }
-
-                                    db.getRef().addValueEventListener(new ValueEventListener() {
-                                        @Override
-                                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                                            for (DataSnapshot item : snapshot.getChildren()) {
-                                                System.out.println("this is the ref " + item.getRef());
-                                                Pesanan pesanan = getItem(item);
-
-                                                orders.add(pesanan);
-                                            }
-                                            listPesananAdapter.notifyDataSetChanged();
-                                        }
-
-                                        @Override
-                                        public void onCancelled(@NonNull DatabaseError error) {
-                                            System.out.println(error.getMessage());
-                                        }
-                                    });
+                                    orders.add(pesanan);
                                 }
                                 listPesananAdapter.notifyDataSetChanged();
                             }
@@ -287,7 +267,7 @@ public class ListPesananFragment extends Fragment {
                                 if (dataSnapshot.exists()) {
                                     // User is a customer
 //                                    callback.onUserTypeCallback(true);
-                                    db.setRef(db.getFirebaseDatabase().getReference("Pesanan").child(db.getUserID()));
+                                    db.setRef(db.getFirebaseDatabase().getReference("Pesanan"));
                                     if (status == 0){
                                         db.setRef(db.getRef().child("Diterima"));
                                     } else if(status == 1){
@@ -296,7 +276,8 @@ public class ListPesananFragment extends Fragment {
                                         db.setRef(db.getRef().child("Selesai"));
                                     }
 
-                                    valueEventListener = db.getRef().addValueEventListener(new ValueEventListener() {
+                                    valueEventListener = db.getRef().orderByChild("customer/uid")
+                                            .equalTo(db.getUserID()).addValueEventListener(new ValueEventListener() {
                                         @Override
                                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                                             orders.clear();
