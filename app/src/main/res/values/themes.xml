@@ -3,6 +3,7 @@
     <style name="Base.Theme.PetCareAPP" parent="Theme.Material3.Light.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:windowSplashScreenBackground">@color/white</item>
     </style>
 
     <style name="Theme.PetCareAPP" parent="Base.Theme.PetCareAPP" />
