@@ -10,10 +10,11 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/profile_banner"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="200dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:padding="16dp"
         android:background="@drawable/home_profile_banner"
         android:elevation="4dp">
@@ -41,49 +42,49 @@
             app:layout_constraintBottom_toBottomOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:padding="16dp">
+<!--    <RelativeLayout-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        android:padding="16dp">-->
 
-        <android.widget.Button
-            android:id="@+id/button_cekPesanan"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:height="44dp"
-            android:background="@drawable/rounded_bg_button_primary"
-            android:elevation="6dp"
-            android:fontFamily="@font/cabin_semibold_italic"
-            android:text="Cek Pesanan"
-            android:textAlignment="center"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="20sp" />
+<!--        <android.widget.Button-->
+<!--            android:id="@+id/button_cekPesanan"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:height="44dp"-->
+<!--            android:background="@drawable/rounded_bg_button_primary"-->
+<!--            android:elevation="6dp"-->
+<!--            android:fontFamily="@font/cabin_semibold_italic"-->
+<!--            android:text="Cek Pesanan"-->
+<!--            android:textAlignment="center"-->
+<!--            android:textAllCaps="false"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textSize="20sp" />-->
 
-        <android.widget.Button
-            android:id="@+id/button_list_produk"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:height="44dp"
-            android:background="@drawable/rounded_bg_button_primary"
-            android:elevation="6dp"
-            android:fontFamily="@font/cabin_semibold_italic"
-            android:text="List Produk"
-            android:textAlignment="center"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:layout_marginTop="30dp"
-            android:layout_below="@id/button_cekPesanan"/>
+<!--        <android.widget.Button-->
+<!--            android:id="@+id/button_list_produk"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:height="44dp"-->
+<!--            android:background="@drawable/rounded_bg_button_primary"-->
+<!--            android:elevation="6dp"-->
+<!--            android:fontFamily="@font/cabin_semibold_italic"-->
+<!--            android:text="List Produk"-->
+<!--            android:textAlignment="center"-->
+<!--            android:textAllCaps="false"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textSize="20sp"-->
+<!--            android:layout_marginTop="30dp"-->
+<!--            android:layout_below="@id/button_cekPesanan"/>-->
 
 
-    </RelativeLayout>
+<!--    </RelativeLayout>-->
 
 
     <!-- Data kamu -->

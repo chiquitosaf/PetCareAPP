@@ -21,6 +21,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class Register extends AppCompatActivity {
@@ -130,6 +131,10 @@ public class Register extends AppCompatActivity {
                         }
                         progressBarRegister.setVisibility(View.GONE);
                         btnDaftar.setText("Daftar");
+                    }
+                }).addOnFailureListener(e -> {
+                    if (e instanceof FirebaseAuthUserCollisionException) {
+                        Toast.makeText(Register.this, "Email sudah terdaftar", Toast.LENGTH_SHORT).show();
                     }
                 });
     }

@@ -94,14 +94,14 @@ public class MainActivity extends AppCompatActivity {
                 getSupportFragmentManager().beginTransaction()
                         .setReorderingAllowed(true)
                         .replace(R.id.fragmentContainer_home, akunFragment, null)
-                        .commit();
+                        .commitAllowingStateLoss();
             }
             else if(item.getItemId() == R.id.histori){
                 HistoriFragment historiFragment = new HistoriFragment();
                 getSupportFragmentManager().beginTransaction()
                         .setReorderingAllowed(true)
                         .replace(R.id.fragmentContainer_home, historiFragment, null)
-                        .commit();
+                        .commitAllowingStateLoss();
             }
             else if(item.getItemId() == R.id.home){
                 userRef.child("Admin").child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -154,13 +154,13 @@ public class MainActivity extends AppCompatActivity {
             getSupportFragmentManager().beginTransaction()
                     .setReorderingAllowed(true)
                     .replace(R.id.fragmentContainer_home, homeCustomerFragment, null)
-                    .commit();
+                    .commitAllowingStateLoss();
         } else if (cek == 2){
             HomeAdminFragment homeAdminFragment = new HomeAdminFragment();
             getSupportFragmentManager().beginTransaction()
                     .setReorderingAllowed(true)
                     .replace(R.id.fragmentContainer_home, homeAdminFragment, null)
-                    .commit();
+                    .commitAllowingStateLoss();
         }
     }
 

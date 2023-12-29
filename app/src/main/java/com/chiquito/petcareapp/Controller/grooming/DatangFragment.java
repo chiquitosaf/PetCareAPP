@@ -27,6 +27,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 
 public class DatangFragment extends Fragment {
@@ -95,20 +96,22 @@ public class DatangFragment extends Fragment {
     }
 
     private void showDatePickerDialog() {
-        DatePickerDialog dateDialog = new DatePickerDialog(getContext(),
-                new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                txtInputTanggalGroomingDatang.setText(dayOfMonth+"/"+ month+"/"+year);
-                Calendar tanggalLahir = Calendar.getInstance();
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy",
-                        java.util.Locale.getDefault());
-                tanggalBookingString = simpleDateFormat.format(tanggalLahir.getTime());
-            }
+        Calendar tanggalLahir = Calendar.getInstance();
+        tanggalLahir.add(Calendar.DAY_OF_MONTH, 6);
 
-        }, Calendar.getInstance().get(Calendar.YEAR), Calendar.getInstance().get(Calendar.MONTH),
-                Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
-        dateDialog.show();
+        CustomDatePickerDialog datePickerDialog = new CustomDatePickerDialog(requireContext(),
+                (view, selectedYear, selectedMonth, selectedDay) -> {
+                    // Handle the selected date within the valid range
+                    // Your logic here for handling the valid date selection
+                    selectedMonth += 1;
+                    txtInputTanggalGroomingDatang.setText(selectedDay+"/"+ selectedMonth+"/"+selectedYear);
+
+                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy",
+                            java.util.Locale.getDefault());
+                    tanggalBookingString = simpleDateFormat.format(tanggalLahir.getTime());
+                });
+
+        datePickerDialog.show();
     }
 
     private void showTimePickerDialog(){
@@ -118,7 +121,7 @@ public class DatangFragment extends Fragment {
             public void onTimeSet(TimePicker view, int hour, int minute) {
                 if (hour < 8 || (hour == 18 && minute > 0) || hour > 18) {
                     // Display an error message or take appropriate action
-                    Toast.makeText(getContext(), "Mohon pilih waktu antara jam 8 pagi - 6 malam"
+                    Toast.makeText(getContext(), "Pilih waktu antara jam 8 pagi - 3 sore"
                             , Toast.LENGTH_SHORT).show();
                     // You might also reset the time picker to a default value here
                     return;
@@ -238,5 +241,37 @@ public class DatangFragment extends Fragment {
 //                });
 //            }
 //        });
+    }
+
+    public class CustomDatePickerDialog extends DatePickerDialog {
+        private long maxDateMillis;
+
+        public CustomDatePickerDialog(Context context, OnDateSetListener listener) {
+            super(context, listener, Calendar.getInstance().get(Calendar.YEAR),
+                    Calendar.getInstance().get(Calendar.MONTH),
+                    Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
+
+            Calendar calendar = Calendar.getInstance();
+            calendar.add(Calendar.DAY_OF_MONTH, 6);
+            maxDateMillis = calendar.getTimeInMillis();
+
+            getDatePicker().setMaxDate(maxDateMillis);
+        }
+
+        @Override
+        public void onDateChanged(@NonNull DatePicker view, int year, int month, int dayOfMonth) {
+            super.onDateChanged(view, year, month, dayOfMonth);
+
+            Calendar selectedDate = Calendar.getInstance();
+            selectedDate.set(year, month, dayOfMonth);
+
+            long diffInMillis = selectedDate.getTimeInMillis() - Calendar.getInstance().getTimeInMillis();
+            long diffInDays = TimeUnit.MILLISECONDS.toDays(diffInMillis);
+
+            if (diffInDays > 6 || diffInDays < 0) {
+                Toast.makeText(getContext(), "Pilih waktu dalam rentang waktu 6 hari.", Toast.LENGTH_SHORT).show();
+                dismiss(); // Close the dialog if the selected date is not within the allowed range
+            }
+        }
     }
 }

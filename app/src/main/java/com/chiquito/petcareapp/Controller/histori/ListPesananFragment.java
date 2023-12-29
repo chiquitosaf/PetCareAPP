@@ -39,7 +39,10 @@ import org.parceler.Parcels;
 import java.util.ArrayList;
 import java.util.EventListener;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -92,9 +95,11 @@ public class ListPesananFragment extends Fragment {
     }
 
 
-        private void loadOrders(int status) {
-        List<Pesanan> orders = getOrdersBasdOnStatus(status);
+    private void loadOrders(int status) {
+
+        List<Pesanan> orders = getOrdersBasedOnStatus(status);
         listPesananAdapter.setOrders(orders);
+
     }
 
 //    private void loadOrdersHash(int status) {
@@ -212,7 +217,7 @@ public class ListPesananFragment extends Fragment {
 //    }
 
 
-    private List<Pesanan> getOrdersBasdOnStatus(int status) {
+    private List<Pesanan> getOrdersBasedOnStatus(int status) {
         List<Pesanan> orders = new ArrayList<>();
 
         db.setRef(db.getFirebaseDatabase().getReference());
@@ -246,7 +251,7 @@ public class ListPesananFragment extends Fragment {
                                         db.setRef(db.getRef().child("Selesai"));
                                     }
 
-                                    db.getRef().addListenerForSingleValueEvent(new ValueEventListener() {
+                                    db.getRef().addValueEventListener(new ValueEventListener() {
                                         @Override
                                         public void onDataChange(@NonNull DataSnapshot snapshot) {
 
@@ -265,6 +270,7 @@ public class ListPesananFragment extends Fragment {
                                         }
                                     });
                                 }
+                                listPesananAdapter.notifyDataSetChanged();
                             }
 
                             @Override
@@ -331,6 +337,8 @@ public class ListPesananFragment extends Fragment {
 
         return orders;
     }
+
+
 
     public Pesanan getItem(DataSnapshot item){
         String namaPemesan = item.child("customer").child("name").getValue(String.class);

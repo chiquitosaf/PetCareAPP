@@ -5,7 +5,7 @@ import org.parceler.ParcelConstructor;
 
 @Parcel
 public class Customer {
-    String name, email, password, noWA, imageUrl, uid;
+    private String name, email, password, noWA, imageUrl, uid;
 
     @ParcelConstructor
     public Customer(String name, String email, String password, String noWA, String uid) {

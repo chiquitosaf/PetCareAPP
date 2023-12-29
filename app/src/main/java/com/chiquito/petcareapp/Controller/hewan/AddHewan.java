@@ -75,6 +75,7 @@ public class AddHewan extends AppCompatActivity {
     DatabaseReference databaseReference;
     StorageReference storageReference;
     String namaAwal;
+    TextView txtTitle;
 //    ActivityResultLauncher<PickVisualMediaRequest> pickImage;
     private final ActivityResultLauncher<Intent> pickImage = registerForActivityResult(
         new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
@@ -89,7 +90,7 @@ public class AddHewan extends AppCompatActivity {
                 }
             }
         }
-);
+    );
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -110,6 +111,7 @@ public class AddHewan extends AppCompatActivity {
         inputWarnaHewan = findViewById(R.id.input_warna_hewan);
         inputKeteranganHewan = findViewById(R.id.input_keterangan_hewan);
         inputRasHewan = findViewById(R.id.input_ras_hewan);
+        txtTitle = findViewById(R.id.txt_title_add_hewan);
 
         hewanImage = findViewById(R.id.profile_photo_hewan);
 
@@ -141,7 +143,10 @@ public class AddHewan extends AppCompatActivity {
             if(imageUri != null){
                 uploadImageToStorage(imageUri, hewanInput, bundle);
             }else{
-                Toast.makeText(this, "Image not found", Toast.LENGTH_SHORT).show();
+                if(bundle != null){
+                    databaseReference.child(Objects.requireNonNull(namaAwal)).removeValue();
+                }
+                databaseReference.child(hewanInput.getNamaHewan()).setValue(hewanInput);
             }
 
             finish();
@@ -169,6 +174,8 @@ public class AddHewan extends AppCompatActivity {
 
         Hewan hewan = Parcels.unwrap(getIntent().getParcelableExtra("hewan"));
         if (bundle != null){
+            txtTitle.setText("Edit Hewan");
+            btnAddHewan.setText("Simpan perubahan");
             inputNamaHewan.setText(hewan.getNamaHewan());
             inputWarnaHewan.setText(hewan.getWarnaHewan());
             inputKeteranganHewan.setText(hewan.getKeterangan());
@@ -193,7 +200,6 @@ public class AddHewan extends AppCompatActivity {
                 imageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
-                        System.out.println(uri.toString());
                         hewan.setUrlImage(uri.toString());
                         if(bundle != null){
                             databaseReference.child(Objects.requireNonNull(namaAwal)).removeValue();

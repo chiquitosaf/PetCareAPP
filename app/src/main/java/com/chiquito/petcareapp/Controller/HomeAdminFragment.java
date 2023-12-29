@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.bumptech.glide.Glide;
 import com.chiquito.petcareapp.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -19,6 +20,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class HomeAdminFragment extends Fragment {
 
     FirebaseDatabase database;
@@ -26,6 +29,7 @@ public class HomeAdminFragment extends Fragment {
     ValueEventListener eventListener;
     FirebaseAuth fAuth;
     TextView textViewBanner;
+    CircleImageView profilePhoto;
 
     public HomeAdminFragment() {
         super(R.layout.fragment_home_admin);
@@ -42,17 +46,23 @@ public class HomeAdminFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         textViewBanner = view.findViewById(R.id.label_banner_admin);
+        profilePhoto = view.findViewById(R.id.profile_photo);
 
         fAuth = FirebaseAuth.getInstance();
         String uID = fAuth.getUid();
         database = FirebaseDatabase.getInstance("https://petcareapp-85cfe-default-rtdb.asia-southeast1.firebasedatabase.app");
-        databaseReference = database.getReference("Admin");
+        databaseReference = database.getReference("Admin").child(uID);
         eventListener = databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String namaUser = snapshot.child(uID).child("name").getValue(String.class);
+                String namaUser = snapshot.child("name").getValue(String.class);
                 String labelBanner = "Hi "+ namaUser +"\nApa kabar hari ini?";
                 textViewBanner.setText(labelBanner);
+
+                if(snapshot.child("imageUrl").exists()){
+                    Glide.with(getActivity()).load(snapshot.child("imageUrl").getValue().
+                            toString()).into(profilePhoto);
+                }
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
