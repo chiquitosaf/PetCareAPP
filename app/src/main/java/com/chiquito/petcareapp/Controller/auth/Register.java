@@ -83,7 +83,6 @@ public class Register extends AppCompatActivity {
             nama.requestFocus();
             nama.setError("Nama tidak boleh kosong");
             return;
-
         }
 
         if (TextUtils.isEmpty(userEmail)) {

@@ -61,6 +61,7 @@ public class DetailHewan extends AppCompatActivity {
         btnEdit = findViewById(R.id.btn_edit_detail_hewan);
         btnDelete = findViewById(R.id.btn_delete_detail_hewan);
 
+
         /**
          * Mengambil data dari intent
          */
@@ -72,7 +73,7 @@ public class DetailHewan extends AppCompatActivity {
         warna.setText(hewan.getWarnaHewan());
         tanggalLahir.setText(hewan.getTanggalLahir());
         keterangan.setText(hewan.getKeterangan());
-        if (hewan.getJenisKelamin().equals("Jantan")) {
+        if (hewan.getJenisKelamin().equals(Hewan.JenisKelamin.Jantan)) {
             jantan.setChecked(true);
         } else {
             betina.setChecked(true);

@@ -31,6 +31,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.bumptech.glide.Glide;
 import com.chiquito.petcareapp.Database;
 import com.chiquito.petcareapp.Model.Hewan;
+import com.chiquito.petcareapp.Model.Pesanan;
 import com.chiquito.petcareapp.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -74,8 +75,9 @@ public class AddHewan extends AppCompatActivity {
     Database db;
     DatabaseReference databaseReference;
     public StorageReference storageReference;
-    String namaAwal;
     TextView txtTitle;
+    Hewan hewan;
+    String namaAwal;
 //    ActivityResultLauncher<PickVisualMediaRequest> pickImage;
     private final ActivityResultLauncher<Intent> pickImage = registerForActivityResult(
         new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
@@ -98,6 +100,9 @@ public class AddHewan extends AppCompatActivity {
 
         FirebaseApp.initializeApp(this);
         Bundle bundle = getIntent().getExtras();
+        if(bundle != null){
+            namaAwal = bundle.getString("namaAwal");
+        }
 
 
         db = new Database();
@@ -133,15 +138,19 @@ public class AddHewan extends AppCompatActivity {
             String keteranganHewan = Objects.requireNonNull(inputKeteranganHewan.getText()).toString();
             String rasHewan = Objects.requireNonNull(inputRasHewan.getText()).toString();
             String spesiesHewan = inputSpesies.getText().toString();
+
+            int selectedId = radioGroupJenisKelamin.getCheckedRadioButtonId();
+
+            radioButtonJenisKelamin = findViewById(selectedId);
+
             String jenisKelamin = radioButtonJenisKelamin.getText().toString();
 
-            namaAwal = namaHewan;
             Hewan hewanInput = new Hewan(namaHewan, warnaHewan, keteranganHewan, rasHewan,
                     Hewan.JenisKelamin.valueOf(jenisKelamin), Hewan.Spesies.valueOf(spesiesHewan),
                     tanggalLahirString, null);
 
             if(imageUri != null){
-                uploadImageToStorage(imageUri, hewanInput, bundle);
+                uploadImageToStorage(imageUri, hewanInput, bundle, namaAwal);
             }else{
                 if(bundle != null){
                     databaseReference.child(Objects.requireNonNull(namaAwal)).removeValue();
@@ -172,7 +181,7 @@ public class AddHewan extends AppCompatActivity {
         inputSpesies = findViewById(R.id.input_spesies_hewan);
         inputSpesies.setAdapter(arrayAdapterSpesies);
 
-        Hewan hewan = Parcels.unwrap(getIntent().getParcelableExtra("hewan"));
+        hewan = Parcels.unwrap(getIntent().getParcelableExtra("hewan"));
         if (bundle != null){
             txtTitle.setText("Edit Hewan");
             btnAddHewan.setText("Simpan perubahan");
@@ -188,11 +197,12 @@ public class AddHewan extends AppCompatActivity {
                 radioGroupJenisKelamin.check(R.id.radio_betina);
             }
             Glide.with(this).load(hewan.getUrlImage()).into(hewanImage);
+            imageUri = Uri.parse(hewan.getUrlImage());
         }
 
     }
 
-    public void uploadImageToStorage(Uri uri, Hewan hewan, Bundle bundle){
+    public void uploadImageToStorage(Uri uri, Hewan hewan, Bundle bundle, String namaAwal){
         final StorageReference imageRef = storageReference.child(System.currentTimeMillis()+"."+getFileExtension(uri));
         imageRef.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override

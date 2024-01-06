@@ -65,8 +65,11 @@ public class HomeCustomerFragment extends Fragment {
                 textViewBanner.setText(labelBanner);
 
                 if(snapshot.child("imageUrl").exists()){
-                    Glide.with(getActivity()).load(snapshot.child("imageUrl").getValue().
-                            toString()).into(profilePhoto);
+                    if(getActivity()!=null){
+                        Glide.with(getActivity()).load(snapshot.child("imageUrl").getValue().
+                                toString()).into(profilePhoto);
+                    }
+
                 }
 
             }

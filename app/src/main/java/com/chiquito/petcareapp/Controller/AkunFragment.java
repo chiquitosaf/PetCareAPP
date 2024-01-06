@@ -111,6 +111,7 @@ public class AkunFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), EditAkun.class);
                 startActivity(intent);
+
             }
         });
     }
@@ -124,8 +125,11 @@ public class AkunFragment extends Fragment {
                 tvEmailProfil.setText(dataSnapshot.child("email").getValue().toString());
 
                 if(dataSnapshot.child("imageUrl").exists()){
-                    Glide.with(getActivity()).load(dataSnapshot.child("imageUrl").getValue().
-                            toString()).into(fotoProfil);
+                    if(getActivity()!=null){
+                        Glide.with(getActivity()).load(dataSnapshot.child("imageUrl").getValue().
+                                toString()).into(fotoProfil);
+                    }
+
                 }
             }
         });

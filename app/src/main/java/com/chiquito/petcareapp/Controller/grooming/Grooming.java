@@ -3,20 +3,16 @@ package com.chiquito.petcareapp.Controller.grooming;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
-import com.chiquito.petcareapp.Model.Alamat;
 import com.chiquito.petcareapp.Model.JenisPesanan;
 import com.chiquito.petcareapp.Model.Pesanan;
 import com.chiquito.petcareapp.R;
@@ -25,14 +21,15 @@ import com.google.android.material.tabs.TabLayout;
 
 import org.parceler.Parcels;
 
+import java.util.Objects;
+
 /**
  * This class is the main activity of the grooming section
  * It contains the tab layout and the view pager
  * The view pager contains the fragments of the grooming section
  * The tab layout is used to navigate between the fragments
  */
-public class Grooming extends AppCompatActivity{ //implements DatangFragment.OnDataPassListenerDatang,
-    //AntarJemputFragment.OnDataPassListenerAntarJemput{
+public class Grooming extends AppCompatActivity{
 
     /**
      * Deklarasi Variable
@@ -44,16 +41,28 @@ public class Grooming extends AppCompatActivity{ //implements DatangFragment.OnD
     private Button btnLanjut;
     SharedViewModel sharedViewModel;
     Pesanan inputData;
+    public AntarJemputListener antarJemputListener;
+    public DatangListener datangListener;
+
+    public void setDatangListener(DatangListener datangListener) {
+        this.datangListener = datangListener;
+    }
+
+    public void setAntarJemputListener(AntarJemputListener antarJemputListener) {
+        this.antarJemputListener = antarJemputListener;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_grooming);
 
-//        if(getIntent().getExtras() != null){
-////            Alamat alamat = Parcels.unwrap(getIntent().getParcelableExtra("alamat"));
-//            System.out.println("this is from grooming activity"+getIntent().getStringExtra("alamat"));
-//        }
+        setDatangListener(new DatangListener() {
+            @Override
+            public boolean inputListener() {
+                return true;
+            }
+        });
 
         /**
          * Inisialisasi View
@@ -79,7 +88,6 @@ public class Grooming extends AppCompatActivity{ //implements DatangFragment.OnD
             finish();
         });
 
-        // Initialize ViewModel using ViewModelProvider
         ViewModelProvider.Factory factory = ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication());
         sharedViewModel = new ViewModelProvider(this, factory).get(SharedViewModel.class);
 
@@ -120,54 +128,34 @@ public class Grooming extends AppCompatActivity{ //implements DatangFragment.OnD
         });
 
 
-
         /**
          * Penerapan button lanjut
          */
         btnLanjut.setOnClickListener(v -> {
-            Intent intent = new Intent(Grooming.this, Grooming2.class);
-            Bundle bundle = new Bundle();
-            inputData = sharedViewModel.getUserInputData().getValue();
-            if(tabLayout.getSelectedTabPosition() == 1){
-                inputData.setAlamat(null);
-                inputData.setJenisPesanan(JenisPesanan.DATANG);
-            }else {
-                inputData.setJenisPesanan(JenisPesanan.ANTAR_JEMPUT);
+
+
+            if(antarJemputListener.inputListener() && datangListener.inputListener()){
+                Toast.makeText(this, "Mohon isi semua data terlebih dahulu", Toast.LENGTH_SHORT).show();
+            }else{
+                Intent intent = new Intent(Grooming.this, Grooming2.class);
+                Bundle bundle = new Bundle();
+                inputData = sharedViewModel.getUserInputData().getValue();
+                if(tabLayout.getSelectedTabPosition() == 1){
+                    inputData.setAlamat(null);
+                    inputData.setJenisPesanan(JenisPesanan.DATANG);
+                }else {
+                    inputData.setJenisPesanan(JenisPesanan.ANTAR_JEMPUT);
+                }
+                System.out.println("this is from grooming activity"+inputData.getTanggalBooking());
+                bundle.putParcelable("pesanan", Parcels.wrap(inputData));
+                intent.putExtras(bundle);
+                startActivity(intent);
             }
-            System.out.println("this is from grooming activity"+inputData.getTanggalBooking());
-            bundle.putParcelable("pesanan", Parcels.wrap(inputData));
-            intent.putExtras(bundle);
-            startActivity(intent);
+
+
         });
 
     }
 
-    /**
-     * This method is used to send data from the fragment to the activity
-     * @param tanggal, waktu
-     */
-//    @Override
-//    public void onDataPassDatang(String tanggal, String waktu) {
-//        Intent intent = new Intent(Grooming.this, Grooming2.class);
-//        intent.putExtra("tanggal", tanggal);
-//        intent.putExtra("waktu", waktu);
-//        btnLanjut.setOnClickListener(v -> {
-//            startActivity(intent);
-//        });
-//    }
 
-    /**
-     * This method is used to send data from the fragment to the activity
-     * @param tanggal, waktu, alamat
-     */
-//    @Override
-//    public void onDataPassAntarJemput(String tanggal, String waktu, Alamat alamat) {
-//        Intent intent = new Intent(Grooming.this, Grooming2.class);
-//        intent.putExtra("tanggal", tanggal);
-//        intent.putExtra("waktu", waktu);
-//        intent.putExtra("alamat", Parcels.wrap(alamat));
-//        btnLanjut.setOnClickListener(v -> {
-//            startActivity(intent);
-//        });
-//    }
 }

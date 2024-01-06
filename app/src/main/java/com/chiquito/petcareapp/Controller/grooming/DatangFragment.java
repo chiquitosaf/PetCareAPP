@@ -30,7 +30,7 @@ import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 
-public class DatangFragment extends Fragment {
+public class DatangFragment extends Fragment implements DatangListener {
     TextView txtInputTanggalGroomingDatang, txtInputWaktuGroomingDatang;
     TextInputEditText inputTanggalGroomingDatang, inputWaktuGroomingDatang;
     String tanggalBookingString, waktuBookingString;
@@ -56,10 +56,20 @@ public class DatangFragment extends Fragment {
 //        }
 //    }
 
+
+    @Override
+    public boolean inputListener() {
+        System.out.println(txtInputTanggalGroomingDatang.getText().toString().equals("--Pilih--") ||
+                txtInputWaktuGroomingDatang.getText().toString().equals("--Pilih--"));
+        return txtInputTanggalGroomingDatang.getText().toString().equals("--Pilih--") ||
+                txtInputWaktuGroomingDatang.getText().toString().equals("--Pilih--");
+    }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        ((Grooming) getActivity()).setDatangListener(this);
 
     }
 
@@ -79,6 +89,7 @@ public class DatangFragment extends Fragment {
         inputWaktuGroomingDatang = view.findViewById(R.id.input_waktu_grooming_datang);
         txtInputWaktuGroomingDatang = view.findViewById(R.id.txt_input_waktu_grooming);
         txtInputTanggalGroomingDatang = view.findViewById(R.id.txt_input_tanggal_groomin_datang);
+
 
         sharedViewModel = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
         

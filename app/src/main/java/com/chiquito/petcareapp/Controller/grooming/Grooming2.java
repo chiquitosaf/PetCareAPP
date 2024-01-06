@@ -10,10 +10,12 @@ import androidx.viewpager2.widget.ViewPager2;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.chiquito.petcareapp.Controller.hewan.RecycleViewHewan;
 import com.chiquito.petcareapp.Controller.paket.PaketActivity;
@@ -62,13 +64,34 @@ public class Grooming2 extends AppCompatActivity {
         btnLanjut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), Grooming3.class);
-                Bundle bundle = new Bundle();
-                pesanan.setKondisiHewan(txtKondisiGrooming.getText().toString());
 
-                bundle.putParcelable("pesanan", Parcels.wrap(pesanan));
-                intent.putExtras(bundle);
-                startActivity(intent);
+                if (autoCompleteHewanGrooming.getText().toString().equals("--Pilih--")) {
+                    autoCompleteHewanGrooming.requestFocus();
+                    autoCompleteHewanGrooming.setError("Hewan tidak boleh kosong");
+                    return;
+                }
+
+                if (autoCompletePaketGrooming.getText().toString().equals("--Pilih--")) {
+                    autoCompletePaketGrooming.requestFocus();
+                    autoCompletePaketGrooming.setError("Paket tidak boleh kosong");
+                    return;
+
+                }
+
+
+                if (pesanan.getHewan() != null || pesanan.getPaket() != null) {
+                    Intent intent = new Intent(getApplicationContext(), Grooming3.class);
+                    Bundle bundle = new Bundle();
+                    pesanan.setKondisiHewan(txtKondisiGrooming.getText().toString());
+
+                    bundle.putParcelable("pesanan", Parcels.wrap(pesanan));
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }else {
+                    Toast.makeText(getApplicationContext(), "Mohon isi semua data terlebih dahulu", Toast.LENGTH_SHORT).show();
+                }
+
+
             }
         });
 

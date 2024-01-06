@@ -51,10 +51,9 @@ import java.util.concurrent.ExecutionException;
  */
 public class ListPesananFragment extends Fragment {
 
-    private HashMap<String, Pesanan> dataMap;
-    private Database db;
+    public Database db;
     private RecyclerView recyclerView;
-    private ListPesananAdapter listPesananAdapter;
+    public ListPesananAdapter listPesananAdapter;
 
     ValueEventListener valueEventListener;
 
@@ -102,127 +101,12 @@ public class ListPesananFragment extends Fragment {
 
     }
 
-//    private void loadOrdersHash(int status) {
-//        HashMap<String, Pesanan> orders = getOrdersBasedOnStatusHash(status);
-//
-//        listPesananAdapter.setOrdersHash(orders);
-//    }
-
-//    private HashMap<String, Pesanan> getOrdersBasedOnStatusHash(int status) {
-//        HashMap<String, Pesanan> orders = new HashMap<>();
-//
-//        db.setRef(db.getFirebaseDatabase().getReference());
-//
-//        if(db.getUserID() != null) {
-//            // Check if the user is in the 'admin' node
-//            db.getRef().child("Admin").child(db.getUserID()).addListenerForSingleValueEvent(new ValueEventListener() {
-//                @Override
-//                public void onDataChange(DataSnapshot dataSnapshot) {
-//                    if (dataSnapshot.exists()) {
-//                        // User is an admin
-////                        callback.onUserTypeCallback(false);
-//                        db.setRef(db.getFirebaseDatabase().getReference().child("Pesanan"));
-//
-//                        valueEventListener = db.getRef().addValueEventListener(new ValueEventListener() {
-//                            @Override
-//                            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                                orders.clear();
-//                                for (DataSnapshot userSnapshot : snapshot.getChildren()){
-//                                    String userID = userSnapshot.getKey();
-//                                    DatabaseReference diterimaRef = db.getRef().child(userID).child("Diterima");
-//                                    diterimaRef.addListenerForSingleValueEvent(new ValueEventListener() {
-//                                        @Override
-//                                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-//
-//                                            for (DataSnapshot item : snapshot.getChildren()) {
-//                                                Pesanan pesanan = getItem(item);
-//                                                orders.put(String.valueOf(item.getKey()), pesanan);
-//                                                System.out.println("this is the order " + orders.get(item.getKey()).getCustomer().getName());
-//                                            }
-//                                        }
-//                                        @Override
-//                                        public void onCancelled(@NonNull DatabaseError error) {
-//                                            System.out.println(error.getMessage());
-//                                        }
-//                                    });
-//
-////                                    loadOrdersHash(orders);
-////                                    listPesananAdapter.notifyDataSetChanged();
-//                                } System.out.println(orders.size());
-//                            }
-//                            @Override
-//                            public void onCancelled(@NonNull DatabaseError error) {
-//                                System.out.println(error.getMessage());
-//                            }
-//                        });
-//
-//
-//                    } else {
-//                        // Check if the user is in the 'customer' node
-//                        db.getRef().child("Customer").child(db.getUserID()).addValueEventListener(new ValueEventListener() {
-//                            @Override
-//                            public void onDataChange(DataSnapshot dataSnapshot) {
-//                                if (dataSnapshot.exists()) {
-//                                    // User is a customer
-////                                    callback.onUserTypeCallback(true);
-//                                    db.setRef(db.getFirebaseDatabase().getReference("Pesanan").child(db.getUserID()));
-//                                    if (status == 0){
-//                                        db.setRef(db.getRef().child("Diterima"));
-//                                    } else if(status == 1){
-//                                        db.setRef(db.getRef().child("Proses"));
-//                                    } else if(status == 2){
-//                                        db.setRef(db.getRef().child("Selesai"));
-//                                    }
-//
-//                                    valueEventListener = db.getRef().addValueEventListener(new ValueEventListener() {
-//                                        @Override
-//                                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                                            orders.clear();
-//                                            System.out.println(snapshot.getRef());
-//                                            for (DataSnapshot item : snapshot.getChildren()) {
-//
-//                                                Pesanan pesanan = getItem(item);
-//
-//                                                orders.put(String.valueOf(item.getKey()), pesanan);
-//                                            }
-//                                            listPesananAdapter.notifyDataSetChanged();
-//                                        }
-//
-//                                        @Override
-//                                        public void onCancelled(@NonNull DatabaseError error) {
-//                                            System.out.println(error.getMessage());
-//                                        }
-//                                    });
-//                                }
-//                            }
-//                            @Override
-//                            public void onCancelled(DatabaseError databaseError) {
-//                                // Handle errors
-//                                Log.d("TAG", databaseError.getMessage());
-//                            }
-//                        });
-//                    }
-//
-//                }
-//
-//                @Override
-//                public void onCancelled(DatabaseError databaseError) {
-//                    // Handle errors
-//                    Log.d("TAG", databaseError.getMessage());
-//                }
-//            });
-//        }
-//
-//        return orders;
-//    }
-
-
-    private List<Pesanan> getOrdersBasedOnStatus(int status) {
+    public List<Pesanan> getOrdersBasedOnStatus(int status) {
         List<Pesanan> orders = new ArrayList<>();
 
         db.setRef(db.getFirebaseDatabase().getReference());
-
-        if(db.getUserID() != null) {
+        String userId = db.getUserID();
+        if(userId != null) {
             // Check if the user is in the 'admin' node
             db.getRef().child("Admin").child(db.getUserID()).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override

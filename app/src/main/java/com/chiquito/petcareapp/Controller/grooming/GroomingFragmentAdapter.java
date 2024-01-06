@@ -9,21 +9,20 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 import com.chiquito.petcareapp.ErrorFragment;
 
 public class GroomingFragmentAdapter extends FragmentStateAdapter {
-
+    private final Fragment[] fragments;
     public GroomingFragmentAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle) {
         super(fragmentManager, lifecycle);
+        fragments = new Fragment[2];
+        fragments[0] = new AntarJemputFragment();
+        fragments[1] = new DatangFragment();
     }
 
     @NonNull
     @Override
     public Fragment createFragment(int position) {
-        if (position==1){
-            return new DatangFragment();
-        }else if(position == 0){
-            return new AntarJemputFragment();
-        }else{
+        if(position < 0 || position >= fragments.length)
             return new ErrorFragment();
-        }
+        return fragments[position];
     }
 
     @Override

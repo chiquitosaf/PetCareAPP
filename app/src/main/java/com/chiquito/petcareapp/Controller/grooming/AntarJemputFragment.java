@@ -26,21 +26,18 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import com.chiquito.petcareapp.Controller.alamat.AddAlamat;
 import com.chiquito.petcareapp.Controller.alamat.RecycleViewAlamat;
 import com.chiquito.petcareapp.Model.Alamat;
 import com.chiquito.petcareapp.R;
 import com.chiquito.petcareapp.SharedViewModel;
 import com.google.android.material.textfield.TextInputEditText;
 
-import org.parceler.Parcels;
-
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
-public class AntarJemputFragment extends Fragment {
+public class AntarJemputFragment extends Fragment implements AntarJemputListener {
 
     TextInputEditText inputTanggalGroomingAntarjemput, inputWaktuGroomingAntarjemput,
             inputAlamatGroomingAntarJemput;
@@ -49,6 +46,18 @@ public class AntarJemputFragment extends Fragment {
     ActivityResultLauncher<Intent> alamatLauncher;
     Alamat alamat;
     SharedViewModel sharedViewModel;
+
+
+    @Override
+    public boolean inputListener() {
+        System.out.println(inputAlamatGroomingAntarJemput.getText().toString().equals("--Pilih--") ||
+                txtInputWaktuGroomingAntarJemput.getText().toString().equals("--Pilih--") ||
+                txtInputTanggalGroomingAntarJemput.getText().toString().equals("--Pilih--"));
+        return inputAlamatGroomingAntarJemput.getText().toString().equals("--Pilih--") ||
+                txtInputWaktuGroomingAntarJemput.getText().toString().equals("--Pilih--") ||
+                txtInputTanggalGroomingAntarJemput.getText().toString().equals("--Pilih--");
+
+    }
 
     public interface OnDataPassListenerAntarJemput {
         void onDataPassAntarJemput(String tanggal, String waktu, Alamat alamat);
@@ -64,6 +73,8 @@ public class AntarJemputFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        ((Grooming) getActivity()).setAntarJemputListener(this);
 
         alamatLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
@@ -130,8 +141,6 @@ public class AntarJemputFragment extends Fragment {
 
         CustomDatePickerDialog datePickerDialog = new CustomDatePickerDialog(requireContext(),
                 (view, selectedYear, selectedMonth, selectedDay) -> {
-                    // Handle the selected date within the valid range
-                    // Your logic here for handling the valid date selection
                     selectedMonth += 1;
                     txtInputTanggalGroomingAntarJemput.setText(selectedDay+"/"+ selectedMonth+"/"+selectedYear);
 
@@ -142,29 +151,6 @@ public class AntarJemputFragment extends Fragment {
 
         datePickerDialog.show();
 
-
-//        DatePickerDialog dateDialog = new DatePickerDialog(requireContext(),
-//                (view, selectedYear, selectedMonth, selectedDay) -> {
-//                        Calendar selectedDate = Calendar.getInstance();
-//                        selectedDate.set(selectedYear, selectedMonth, selectedDay);
-//
-//                        long diffInMillis = selectedDate.getTimeInMillis() - Calendar.getInstance().getTimeInMillis();
-//                        long diffInDays = TimeUnit.MILLISECONDS.toDays(diffInMillis);
-//
-//                        if (diffInDays > 6 || diffInDays < 0) {
-//                            Toast.makeText(requireContext(), "Please select a date within 6 days from today.", Toast.LENGTH_SHORT).show();
-//                            dateDia; // Close the DatePickerDialog
-//                        } else {
-//                            // Handle the selected date within the valid range
-//                            // Your logic here for handling the valid date selection
-//                            txtInputTanggalGroomingAntarJemput.setText(selectedDay+"/"+ selectedMonth+"/"+selectedYear);
-//
-//                            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy",
-//                                    java.util.Locale.getDefault());
-//                            tanggalBookingString = simpleDateFormat.format(tanggalLahir.getTime());
-//                        }
-//                }, maxYear, maxMonth, maxDay);
-//        dateDialog.show();
     }
 
     private void showTimePickerDialog(){
@@ -273,7 +259,7 @@ public class AntarJemputFragment extends Fragment {
 
             if (diffInDays > 6 || diffInDays < 0) {
                 Toast.makeText(getContext(), "Pilih waktu dalam rentang waktu 6 hari.", Toast.LENGTH_SHORT).show();
-                dismiss(); // Close the dialog if the selected date is not within the allowed range
+                dismiss();
             }
         }
     }
